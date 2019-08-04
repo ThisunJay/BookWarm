@@ -29,5 +29,7 @@
     <string name="taddbutton">Add</string>
     <string name="tbuttonDelete">Delete</string>
     <string name="tbuttonUpdate">Update</string>
+    <string name="kaviAdd">Add</string>
+    <string name="kaviSave">Save</string>
 
 </resources>

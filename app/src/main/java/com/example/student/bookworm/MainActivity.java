@@ -27,4 +27,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, BooksMain.class);
         startActivity(intent);
     }
+
+    public void clickWish(View view){
+        Intent intent = new Intent(MainActivity.this, wishList.class);
+        startActivity(intent);
+    }
 }
