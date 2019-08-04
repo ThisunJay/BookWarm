@@ -4,5 +4,19 @@
     <string name="tbutton2">Categories</string>
     <string name="tbutton3">Wish List</string>
     <string name="tbutton4">BOOKS</string>
+    <string name="tV1">Continue Your Reading</string>
+    <string name="tV2">Village by the Sea</string>
+    <string name="tV3">Fifty Shades of Grey</string>
+    <string name="tV4">Baby Got Back</string>
+    <string name="tV5">Noob Alliance</string>
+    <string name="Atv1">Add the Book You are Reading!</string>
+    <string name="Atv2">Name</string>
+    <string name="Aet1">Harry Potter</string>
+    <string name="Atv3">Author</string>
+    <string name="Aet2">J.K.Rowlings</string>
+    <string name="Aet3">From</string>
+    <string name="Aet4">Till</string>
+    <string name="Atv4">Genre</string>
+    <string name="Ab1">ADD</string>
 
 </resources>
