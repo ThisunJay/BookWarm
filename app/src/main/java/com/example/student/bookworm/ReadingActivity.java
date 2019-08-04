@@ -18,4 +18,14 @@ public class ReadingActivity extends AppCompatActivity {
         Intent intent1 = new Intent(ReadingActivity.this,AddReadAct.class);
         startActivity(intent1);
     }
+
+    public void onSug(View view){
+        Intent intent1 = new Intent(ReadingActivity.this,SugAct.class);
+        startActivity(intent1);
+    }
+
+    public void onRview(View view){
+        Intent intent1 = new Intent(ReadingActivity.this,onReadingAct.class);
+        startActivity(intent1);
+    }
 }

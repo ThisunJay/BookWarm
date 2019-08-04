@@ -31,5 +31,12 @@
     <string name="tbuttonUpdate">Update</string>
     <string name="kaviAdd">Add</string>
     <string name="kaviSave">Save</string>
+    <string name="Ab3">Suggestions</string>
+    <string name="Atv">Books you may like</string>
+    <string name="atv2">Book Name</string>
+    <string name="abtn3">BUY</string>
+    <string name="Abtn">Village by the Sea</string>
+    <string name="Abtn4">OK</string>
+    <string name="Abtn3">EDIT</string>
 
 </resources>

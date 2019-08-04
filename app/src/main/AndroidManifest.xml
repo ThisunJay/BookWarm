@@ -27,7 +27,10 @@
         <activity android:name=".updateReview" />
         <activity android:name=".wishList" />
         <activity android:name=".AddToWishlist" />
-        <activity android:name=".viewWish"></activity>
+        <activity android:name=".viewWish" />
+        <activity android:name=".SugAct" />
+        <activity android:name=".CheckBook" />
+        <activity android:name=".onReadingAct"></activity>
     </application>
 
 </manifest>
