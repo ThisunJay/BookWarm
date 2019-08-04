@@ -4,5 +4,6 @@
     <string name="tbutton2">Categories</string>
     <string name="tbutton3">Wish List</string>
     <string name="tbutton4">BOOKS</string>
+    <string name="taddbutton">Add</string>
 
 </resources>
