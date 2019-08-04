@@ -4,6 +4,14 @@
     <string name="tbutton2">Categories</string>
     <string name="tbutton3">Wish List</string>
     <string name="tbutton4">BOOKS</string>
+    <string name="obutton1">DELETE</string>
+    <string name="obutton2">ADD</string>
+
+    <string-array name="deleteCat">
+        <item>My Fav Category</item>
+        <item>2nd fav Category</item>
+        <item>Favourite </item>
+    </string-array>
     <string name="tV1">Continue Your Reading</string>
     <string name="tV2">Village by the Sea</string>
     <string name="tV3">Fifty Shades of Grey</string>

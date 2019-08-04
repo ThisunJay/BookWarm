@@ -13,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void goTo(View v){
+        Intent myItent = new Intent(MainActivity.this,Categories.class);
+        startActivity(myItent);
+    }
+
     public void onRead(View view){
         Intent intent1 = new Intent(MainActivity.this,ReadingActivity.class);
         startActivity(intent1);
