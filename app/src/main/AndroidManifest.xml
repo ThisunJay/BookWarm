@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BooksMain" />
+        <activity android:name=".AddBook" />
+        <activity android:name=".ViewBook"></activity>
         <activity android:name=".ReadingActivity" />
         <activity android:name=".AddReadAct"></activity>
     </application>

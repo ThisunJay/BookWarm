@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent1 = new Intent(MainActivity.this,ReadingActivity.class);
         startActivity(intent1);
     }
+
+    public void clickBook(View view){
+        Intent intent = new Intent(MainActivity.this, BooksMain.class);
+        startActivity(intent);
+    }
 }
