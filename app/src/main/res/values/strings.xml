@@ -27,5 +27,7 @@
     <string name="Atv4">Genre</string>
     <string name="Ab1">ADD</string>
     <string name="taddbutton">Add</string>
+    <string name="tbuttonDelete">Delete</string>
+    <string name="tbuttonUpdate">Update</string>
 
 </resources>
