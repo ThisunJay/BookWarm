@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BookWorm</string>
+    <string name="tbutton1">READING</string>
+    <string name="tbutton2">Categories</string>
+    <string name="tbutton3">Wish List</string>
+    <string name="tbutton4">BOOKS</string>
+
 </resources>
