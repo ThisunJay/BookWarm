@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddToWishlist"
-    android:background="@drawable/tbackground">
+    android:background="@drawable/tttbackground">
 
     <TextView
         android:id="@+id/textView22"
@@ -136,6 +136,7 @@
         android:background="@color/colorPrimary"
         android:onClick="viewWishList"
         android:text="@string/kaviAdd"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
