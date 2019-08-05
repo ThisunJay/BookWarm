@@ -27,8 +27,8 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="70dp"
-        android:layout_height="63dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="9dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/addicon" />
+        app:srcCompat="@drawable/abackicon" />
 
     <TextView
         android:id="@+id/tV1"
