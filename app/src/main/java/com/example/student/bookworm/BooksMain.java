@@ -23,4 +23,9 @@ public class BooksMain extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onBack(View view){
+        Intent intent = new Intent(BooksMain.this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }

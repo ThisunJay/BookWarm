@@ -14,10 +14,18 @@ public class DeleteCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_category);
 
+        Spinner myspinner = (Spinner) findViewById(R.id.spinner11);
+        ArrayAdapter<String> myAdapter= new ArrayAdapter<String>(DeleteCategory.this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.deleteCat));
+
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        myspinner.setAdapter(myAdapter);
 
     }
-    public void gotoHome(View v){
+    public void onBack(View v){
         Intent myHome = new Intent(DeleteCategory.this,Categories.class);
         startActivity(myHome);
     }
+
+
+
 }

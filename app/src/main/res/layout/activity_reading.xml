@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".ReadingActivity">
 
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/transparent"
+        android:onClick="onBack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017"
+        app:srcCompat="@drawable/backbtn" />
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="70dp"
@@ -30,7 +48,7 @@
         android:layout_width="250dp"
         android:layout_height="44dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/tV1"
@@ -107,7 +125,7 @@
         android:background="@android:color/transparent"
         android:onClick="onSug"
         android:text="@string/Ab3"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"

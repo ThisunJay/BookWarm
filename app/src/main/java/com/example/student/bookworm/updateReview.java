@@ -17,4 +17,9 @@ public class updateReview extends AppCompatActivity {
         Intent intent = new Intent(updateReview.this, ViewBook.class);
         startActivity(intent);
     }
+
+    public void onBack(View view){
+        Intent intent = new Intent(updateReview.this, ViewBook.class);
+        startActivity(intent);
+    }
 }

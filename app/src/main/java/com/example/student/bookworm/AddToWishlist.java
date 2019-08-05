@@ -17,4 +17,9 @@ public class AddToWishlist extends AppCompatActivity {
         Intent intent = new Intent(AddToWishlist.this, wishList.class);
         startActivity(intent);
     }
+
+    public void onBack(View view){
+        Intent intent = new Intent(AddToWishlist.this, wishList.class);
+        startActivity(intent);
+    }
 }

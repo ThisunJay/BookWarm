@@ -17,4 +17,9 @@ public class SugAct extends AppCompatActivity {
         Intent intent1 = new Intent(SugAct.this,CheckBook.class);
         startActivity(intent1);
     }
+
+    public void onBack(View view){
+        Intent intent1 = new Intent(SugAct.this,ReadingActivity.class);
+        startActivity(intent1);
+    }
 }

@@ -12,7 +12,8 @@ public class AddCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
     }
-    public void gotoCate(View v){
+
+    public void onBack(View v){
         Intent myHome = new Intent(AddCategory.this,Categories.class);
         startActivity(myHome);
     }

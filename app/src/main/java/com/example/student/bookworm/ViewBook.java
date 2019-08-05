@@ -22,4 +22,9 @@ public class ViewBook extends AppCompatActivity {
         Intent intent = new Intent(ViewBook.this, updateReview.class);
         startActivity(intent);
     }
+
+    public void onBack(View view){
+        Intent intent = new Intent(ViewBook.this, BooksMain.class);
+        startActivity(intent);
+    }
 }
