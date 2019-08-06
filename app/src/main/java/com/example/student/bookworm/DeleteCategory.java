@@ -22,7 +22,7 @@ public class DeleteCategory extends AppCompatActivity {
 
     }
     public void onBack(View v){
-        Intent myHome = new Intent(DeleteCategory.this,Categories.class);
+        Intent myHome = new Intent(DeleteCategory.this,CategorySettings.class);
         startActivity(myHome);
     }
 

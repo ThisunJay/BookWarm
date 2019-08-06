@@ -30,7 +30,9 @@
         <activity android:name=".viewWish" />
         <activity android:name=".SugAct" />
         <activity android:name=".CheckBook" />
-        <activity android:name=".onReadingAct"></activity>
+        <activity android:name=".onReadingAct" />
+        <activity android:name=".CategorySettings" />
+        <activity android:name=".UpdateCategory"></activity>
     </application>
 
 </manifest>

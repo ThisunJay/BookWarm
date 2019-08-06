@@ -21,7 +21,7 @@ public class Categories extends AppCompatActivity {
         startActivity(myHome);
     }
     public void gotoSettings(View v){
-        Intent mySettings = new Intent(Categories.this,DeleteCategory.class);
+        Intent mySettings = new Intent(Categories.this,CategorySettings.class);
         startActivity(mySettings);
     }
 
