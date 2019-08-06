@@ -8,7 +8,7 @@
     android:background="@drawable/tttbackground">
 
     <ImageView
-        android:id="@+id/imageView24"
+        android:id="@+id/backbtn1"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -26,14 +26,14 @@
         app:srcCompat="@drawable/backbtn" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/ttv10"
         android:layout_width="161dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Add Category"
+        android:text="@string/ttv10"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -45,14 +45,14 @@
         app:layout_constraintVertical_bias="0.129" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/ttv11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Enter Category Name"
+        android:text="@string/ttv11"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.34" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/ttin6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -73,6 +73,7 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:text="@string/ttin6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -81,7 +82,7 @@
         app:layout_constraintVertical_bias="0.438" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/tbtn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -89,7 +90,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
-        android:text="@string/obutton2"
+        android:text="@string/tbtn1"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

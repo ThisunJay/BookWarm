@@ -26,7 +26,7 @@
         app:srcCompat="@drawable/backbtn" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/ttv20"
         android:layout_width="273dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -34,7 +34,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Village by the Sea"
+        android:text="@string/ttv20"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
@@ -47,14 +47,14 @@
         app:layout_constraintVertical_bias="0.044" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/ttv21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="From"
+        android:text="@string/ttv21"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +65,7 @@
         app:layout_constraintVertical_bias="0.327" />
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/ttv22"
         android:layout_width="55dp"
         android:layout_height="21dp"
         android:layout_marginStart="8dp"
@@ -83,14 +83,14 @@
         app:layout_constraintVertical_bias="0.476" />
 
     <TextView
-        android:id="@+id/textView32"
+        android:id="@+id/ttv23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Pages Left"
+        android:text="@string/ttv23"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,14 +101,14 @@
         app:layout_constraintVertical_bias="0.623" />
 
     <TextView
-        android:id="@+id/textView33"
+        android:id="@+id/ttv24"
         android:layout_width="152dp"
         android:layout_height="39dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="12/01/2019"
+        android:text="@string/ttv24"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
@@ -120,14 +120,14 @@
         app:layout_constraintVertical_bias="0.337" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/ttv25"
         android:layout_width="153dp"
         android:layout_height="33dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="20/01/2019"
+        android:text="@string/ttv25"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
@@ -139,14 +139,14 @@
         app:layout_constraintVertical_bias="0.489" />
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/ttv26"
         android:layout_width="128dp"
         android:layout_height="23dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="101"
+        android:text="@string/ttv26"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
@@ -170,7 +170,7 @@
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.635"
+        app:layout_constraintHorizontal_bias="0.687"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.789" />
@@ -188,7 +188,7 @@
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.789" />

@@ -27,14 +27,14 @@
         app:srcCompat="@drawable/backbtn" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/ttv40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Wishlist"
+        android:text="@string/ttv40"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.069" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/ttv41"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_marginStart="8dp"
@@ -54,7 +54,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="viewWish"
-        android:text="Marvel Comics 2019"
+        android:text="@string/ttv41"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -66,14 +66,14 @@
         app:layout_constraintVertical_bias="0.259" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/ttv42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Nayana Mal Gasa"
+        android:text="@string/ttv42"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -134,14 +134,14 @@
         app:srcCompat="@drawable/cook" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/ttv43"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Uyanna Igenaganna"
+        android:text="@string/ttv43"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"

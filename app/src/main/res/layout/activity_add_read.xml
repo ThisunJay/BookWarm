@@ -94,7 +94,7 @@
         app:layout_constraintVertical_bias="0.676" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/ttin7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -104,6 +104,7 @@
         android:ems="10"
         android:hint="@string/Aet1"
         android:inputType="textPersonName"
+        android:text="@string/ttin7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.937"
@@ -112,7 +113,7 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/ttin8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -122,6 +123,7 @@
         android:ems="10"
         android:hint="@string/Aet2"
         android:inputType="textPersonName"
+        android:text="@string/ttin8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.937"
@@ -148,7 +150,7 @@
         app:layout_constraintVertical_bias="0.503" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/Aet6"
         android:layout_width="116dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
@@ -158,6 +160,7 @@
         android:ems="10"
         android:hint="@string/Aet4"
         android:inputType="date"
+        android:text="@string/Aet6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.864"
