@@ -29,4 +29,9 @@ public class Categories extends AppCompatActivity {
         Intent intent = new Intent(Categories.this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void onNovels(View view){
+        Intent intent = new Intent(Categories.this, BooksMain.class);
+        startActivity(intent);
+    }
 }

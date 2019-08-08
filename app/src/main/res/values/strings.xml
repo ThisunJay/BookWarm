@@ -95,5 +95,6 @@
     <string name="updateTextOsa">Update Category</string>
     <string name="textSeletOsa">Select Category to Update</string>
     <string name="btnUpdateOsa">Update</string>
+    <string name="osaUpdateText" />
 
 </resources>
