@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SplashAct">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +39,7 @@
         <activity android:name=".CheckBook" />
         <activity android:name=".onReadingAct" />
         <activity android:name=".CategorySettings" />
-        <activity android:name=".UpdateCategory"></activity>
+        <activity android:name=".UpdateCategory" />
     </application>
 
 </manifest>
