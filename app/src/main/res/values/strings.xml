@@ -97,5 +97,6 @@
     <string name="btnUpdateOsa">Update</string>
     <string name="osaUpdateText" />
     <string name="AedG" />
+    <string name="Edit">Edit</string>
 
 </resources>
