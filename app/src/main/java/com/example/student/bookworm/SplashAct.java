@@ -1,6 +1,7 @@
 package com.example.student.bookworm;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashAct extends AppCompatActivity {
+//    public static final int SPLASH_SCREEN_TIMEOUT = 2000;
     private TextView tvS;
     private ImageView ivS;
 
@@ -32,10 +34,18 @@ public class SplashAct extends AppCompatActivity {
                     startActivity(i);
                     finish();
 
-
                 }
             }
         };
             timer.start();
+
+        //new Handler().postDelayed(new Runnable() {
+          //  @Override
+            //public void run() {
+              //  Intent intent = new Intent(SplashAct.this,MainActivity.class);
+                //startActivity(intent);
+                //finish();
+            //}
+        //}, SPLASH_SCREEN_TIMEOUT);
     }
 }
