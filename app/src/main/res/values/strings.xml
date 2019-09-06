@@ -98,5 +98,7 @@
     <string name="osaUpdateText" />
     <string name="AedG" />
     <string name="Edit">Edit</string>
+    <string name="txtFrom" />
+    <string name="txtTill" />
 
 </resources>

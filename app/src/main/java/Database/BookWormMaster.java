@@ -17,4 +17,20 @@ public final class BookWormMaster {
 
     }
 
+    protected static class Category implements BaseColumns{
+
+        protected static final String TABLE_NAME_CAT = "category";
+        protected static final String COLUMN_NAME_CATNAME = "name";
+    }
+
+    protected static class ReadBook implements BaseColumns{
+
+        protected static final String TABLE_RBOOK = "bookread";
+        protected static final String COLUMN_RNAME = "name";
+        protected static final String COLUMN_RAUTHOR = "author";
+        protected static final String COLUMN_RFROM = "rfrom";
+        protected static final String COLUMN_RTILL = "rtill";
+        protected static final String COLUMN_RGENRE = "genere";
+    }
+
 }

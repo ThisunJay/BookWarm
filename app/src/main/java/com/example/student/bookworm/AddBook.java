@@ -10,7 +10,6 @@ import android.widget.Toast;
 import Database.DBHandler;
 
 public class AddBook extends AppCompatActivity {
-
     DBHandler db;
     EditText txt_title, txt_author, txt_price, txt_pages, txt_review;
     private String title, author, price, pages, review;

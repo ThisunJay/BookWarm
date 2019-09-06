@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -30,6 +31,23 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.execSQL(create_table_bookinfo);
 
+        String create_table_category = "CREATE TABLE " + BookWormMaster.Category.TABLE_NAME_CAT + " ("+
+                BookWormMaster.Category._ID + " INTEGER PRIMARY KEY, " +
+                BookWormMaster.Category.COLUMN_NAME_CATNAME + " TEXT);";
+
+        db.execSQL(create_table_category);
+
+        String create_table_Read = "CREATE TABLE " + BookWormMaster.ReadBook.TABLE_RBOOK + " ("+
+                BookWormMaster.ReadBook._ID + " INTEGER PRIMARY KEY, " +
+                BookWormMaster.ReadBook.COLUMN_RNAME + " TEXT, " +
+                BookWormMaster.ReadBook.COLUMN_RAUTHOR + " TEXT, " +
+                BookWormMaster.ReadBook.COLUMN_RFROM + " TEXT, " +
+                BookWormMaster.ReadBook.COLUMN_RTILL + " TEXT, " +
+                BookWormMaster.ReadBook.COLUMN_RGENRE + " TEXT);";
+
+        db.execSQL(create_table_Read);
+        Log.i( "DB" , create_table_Read );
+
     }
 
     @Override
@@ -54,6 +72,46 @@ public class DBHandler extends SQLiteOpenHelper {
         if(result > 0){
             return true;
         }else{
+            return false;
+        }
+
+    }
+
+    public boolean addCategory(String name){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(BookWormMaster.Category.COLUMN_NAME_CATNAME, name);
+
+        long result = db.insert(BookWormMaster.Category.TABLE_NAME_CAT, null, contentValues);
+
+        if(result > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean addReadB(String name,String author,String dfrom,String dtill,String genre){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RNAME,name);
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RAUTHOR,author);
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RFROM,dfrom);
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RTILL,dtill);
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RGENRE,genre);
+
+        long result = db.insert(BookWormMaster.ReadBook.TABLE_RBOOK,null,contentValues);
+
+        if (result > 0){
+            return true;
+        }else {
             return false;
         }
 
