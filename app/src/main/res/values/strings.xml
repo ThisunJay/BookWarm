@@ -100,5 +100,8 @@
     <string name="Edit">Edit</string>
     <string name="txtFrom" />
     <string name="txtTill" />
+    <string name="osaBtnUpdate">Update</string>
+    <string name="osabtnDelete" />
+    <string name="osabtnDelete2">Delete</string>
 
 </resources>

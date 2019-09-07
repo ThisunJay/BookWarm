@@ -2,9 +2,14 @@ package Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.ArrayList;
+
+import Model.Users;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -76,6 +81,51 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
     }
+
+
+    //==================================OSANDA's display catogory method | Do not edit this=============================
+    public ArrayList<Users> readAllInfor() {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] projection = {BookWormMaster.Category._ID,BookWormMaster.Category.COLUMN_NAME_CATNAME};
+
+        String sortOrder = BookWormMaster.Category.COLUMN_NAME_CATNAME;
+
+        Cursor values = db.query(BookWormMaster.Category.TABLE_NAME_CAT,projection,null,null,null,null,sortOrder);
+
+        ArrayList<Users> users = new ArrayList<Users>();
+
+        while (values.moveToNext()){
+            String userName = values.getString(values.getColumnIndexOrThrow(BookWormMaster.Category.COLUMN_NAME_CATNAME));
+            users.add( new Users(userName) );
+
+        }
+        return users;
+    }
+
+    public void deleteuser(String username){
+        SQLiteDatabase db = getReadableDatabase();
+        String Selection = BookWormMaster.Category.COLUMN_NAME_CATNAME + " LIKE ?";
+        String[] SelectionArgs = { username };
+
+        db.delete(BookWormMaster.Category.TABLE_NAME_CAT , Selection , SelectionArgs );
+    }
+
+    public void userUpdate(String username ){
+        SQLiteDatabase db  = getReadableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(BookWormMaster.Category.COLUMN_NAME_CATNAME , username );
+
+        String Selection = BookWormMaster.Category.COLUMN_NAME_CATNAME + " Like ? ";
+        Log.i("DB" , Selection  );
+        String[] SelectionArgs = { username };
+
+        db.update(BookWormMaster.Category.TABLE_NAME_CAT ,contentValues , Selection , SelectionArgs);
+
+    }
+    //=========================================OSANDA's display methos is over==============================
+
+
 
     public boolean addCategory(String name){
 
