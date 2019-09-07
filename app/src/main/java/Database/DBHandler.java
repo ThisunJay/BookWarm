@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+import Model.RBooks;
 import Model.Users;
 
 public class DBHandler extends SQLiteOpenHelper {
@@ -65,7 +66,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+       // db.execSQL("DROP TABLE IF EXiSTS " + BookWormMaster.ReadBook.TABLE_RBOOK);
+       // onCreate(db);
     }
 
     public boolean addBook(String title, String author, String price, String pages, String review){
@@ -197,4 +199,28 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     }
+
+    //Adi---------------------------------------------------------------------------------------------
+    public ArrayList<RBooks> readAllRbooks() {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME};
+
+        String sortOrder = BookWormMaster.ReadBook.COLUMN_RNAME;
+
+        Cursor values = db.query(BookWormMaster.ReadBook.TABLE_RBOOK ,projection,null,null,null,null,sortOrder);
+
+        ArrayList<RBooks> books = new ArrayList<RBooks>();
+
+        while (values.moveToNext()){
+            RBooks book = new RBooks();
+            String bookName = values.getString( values.getColumnIndexOrThrow( BookWormMaster.ReadBook.COLUMN_RNAME ));
+            book.setName( bookName);
+            books.add( book );
+
+        }
+        return books;
+    }
+
+
+
 }

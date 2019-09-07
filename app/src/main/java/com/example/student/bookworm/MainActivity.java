@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onRead(View view){
-        Intent intent1 = new Intent(MainActivity.this,ReadingActivity.class);
+        Intent intent1 = new Intent(MainActivity.this, ReadingActivity.class);
         startActivity(intent1);
     }
 

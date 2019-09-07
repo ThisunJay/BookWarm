@@ -52,9 +52,16 @@ public class AddReadAct extends AppCompatActivity {
         Genre = txtgenre.getText().toString();
 
         boolean result = adb.addReadB(Name,Author,RFrom,RTill,Genre);
+        txtname.getText().clear();
+        txtauth.getText().clear();
+        txtrfrom.getText().clear();
+        txtrtill.getText().clear();
+        txtgenre.getText().clear();
 
         if(result == true){
             Toast.makeText(getApplicationContext(),"Success!",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, ReadingActivity.class);
+            startActivity(intent);
         }else{
             Toast.makeText(getApplicationContext(),"Failed!",Toast.LENGTH_LONG).show();
         }
@@ -109,6 +116,8 @@ public class AddReadAct extends AppCompatActivity {
 
 
     }
+
+
 
     public void onAddR(View view){
         Intent intent1 = new Intent(AddReadAct.this,ReadingActivity.class);

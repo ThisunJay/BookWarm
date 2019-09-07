@@ -23,7 +23,7 @@ public final class BookWormMaster {
         protected static final String COLUMN_NAME_CATNAME = "name";
     }
 
-    protected static class ReadBook implements BaseColumns{
+    public static class ReadBook implements BaseColumns{
 
         protected static final String TABLE_RBOOK = "bookread";
         protected static final String COLUMN_RNAME = "name";
