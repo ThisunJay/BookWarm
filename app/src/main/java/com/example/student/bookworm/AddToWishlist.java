@@ -47,7 +47,7 @@ public class AddToWishlist extends AppCompatActivity {
         Price =  Double.parseDouble( price.getText().toString() );
 
 
-        boolean result = db.AddWishList(Title,Athor,price);
+        boolean result = db.AddWishList(Title,Athor,Price);
 
 
         if(result == true){

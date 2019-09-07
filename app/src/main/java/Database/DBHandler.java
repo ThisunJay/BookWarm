@@ -60,7 +60,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 BookWormMaster.AddWishList._ID + "INTEGER PRIMARY KEY, " +
                 BookWormMaster.AddWishList.COLUMN_Title + " TEXT, " +
                 BookWormMaster.AddWishList.COLUMN_Author + " TEXT " +
-                BookWormMaster.AddWishList.COLUMN_Price + " INTEGER ); ";
+                BookWormMaster.AddWishList.COLUMN_Price + " TEXT ); ";
     }
 
     @Override
@@ -176,7 +176,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     //=============================kavindi=====================================
 
-    public boolean AddWishList(String Title, String Author, EditText Price){
+    public boolean AddWishList(String Title, String Author, double Price){
 
         SQLiteDatabase db = getWritableDatabase();
 
@@ -184,7 +184,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         contentValues.put(BookWormMaster.AddWishList.COLUMN_Title,Title);
         contentValues.put(BookWormMaster.AddWishList.COLUMN_Author,Author);
-        contentValues.put(BookWormMaster.AddWishList.COLUMN_Price,Price);
+        contentValues.put(BookWormMaster.AddWishList.COLUMN_Price, Price);
 
         long result = db.insert(BookWormMaster.AddWishList.TABLE_WList,null,contentValues);
 
