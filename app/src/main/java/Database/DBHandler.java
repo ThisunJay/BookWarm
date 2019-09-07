@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -55,6 +56,11 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(create_table_Read);
         Log.i( "DB" , create_table_Read );
 
+        String create_table_wishList = "CREATE TABLE " + BookWormMaster.AddWishList.TABLE_WList + " ("+
+                BookWormMaster.AddWishList._ID + "INTEGER PRIMARY KEY, " +
+                BookWormMaster.AddWishList.COLUMN_Title + " TEXT, " +
+                BookWormMaster.AddWishList.COLUMN_Author + " TEXT " +
+                BookWormMaster.AddWishList.COLUMN_Price + " INTEGER ); ";
     }
 
     @Override
@@ -166,6 +172,29 @@ public class DBHandler extends SQLiteOpenHelper {
         }else {
             return false;
         }
+
+    }
+    //=============================kavindi=====================================
+
+    public boolean AddWishList(String Title, String Author, EditText Price){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(BookWormMaster.AddWishList.COLUMN_Title,Title);
+        contentValues.put(BookWormMaster.AddWishList.COLUMN_Author,Author);
+        contentValues.put(BookWormMaster.AddWishList.COLUMN_Price,Price);
+
+        long result = db.insert(BookWormMaster.AddWishList.TABLE_WList,null,contentValues);
+
+        if(result > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+
 
     }
 }

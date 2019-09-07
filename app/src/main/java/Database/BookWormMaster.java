@@ -33,4 +33,12 @@ public final class BookWormMaster {
         protected static final String COLUMN_RGENRE = "genere";
     }
 
+    protected static class AddWishList implements BaseColumns{
+
+        protected static final String TABLE_WList = "wishList";
+        protected static final String COLUMN_Title = "Title";
+        protected static final String COLUMN_Author = "Author";
+        protected static final String COLUMN_Price = "Price";
+    }
+
 }
