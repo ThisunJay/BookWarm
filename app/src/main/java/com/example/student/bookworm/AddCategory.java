@@ -61,6 +61,9 @@ public class AddCategory extends AppCompatActivity {
 
     }
 
+
+
+
     public void addCategory(View view){
         name = txt_name.getText().toString();
 
@@ -73,6 +76,15 @@ public class AddCategory extends AppCompatActivity {
         }
         displayInfo(view);
     }
+
+
+
+
+
+
+
+
+
 
     public void deleteUser(View view){
         name = txt_name.getText().toString();

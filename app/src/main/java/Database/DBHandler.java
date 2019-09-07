@@ -36,11 +36,13 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.execSQL(create_table_bookinfo);
 
+        //osanda's create table method
         String create_table_category = "CREATE TABLE " + BookWormMaster.Category.TABLE_NAME_CAT + " ("+
                 BookWormMaster.Category._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.Category.COLUMN_NAME_CATNAME + " TEXT);";
 
         db.execSQL(create_table_category);
+        //end osanda's methods
 
         String create_table_Read = "CREATE TABLE " + BookWormMaster.ReadBook.TABLE_RBOOK + " ("+
                 BookWormMaster.ReadBook._ID + " INTEGER PRIMARY KEY, " +
