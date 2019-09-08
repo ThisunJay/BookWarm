@@ -50,8 +50,8 @@ public class AddBook extends AppCompatActivity {
         if(result == true){
             //Toast.makeText(getApplicationContext(), "Book Added Successsfully", Toast.LENGTH_SHORT);
             Toast.makeText(getApplicationContext(),"Book Added Successfully",Toast.LENGTH_LONG).show();
-            //Intent intent = new Intent(AddBook.this, ViewBook.class);
-            //startActivity(intent);
+            Intent intent = new Intent(AddBook.this, BooksMain.class);
+            startActivity(intent);
         }else{
             Toast.makeText(getApplicationContext(), "Book adding faild", Toast.LENGTH_SHORT).show();
         }
