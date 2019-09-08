@@ -50,5 +50,6 @@ public class wishList extends AppCompatActivity {
     public void OnWishinClick(int position){
         arrayList.get(position);
         Intent intent = new Intent(this,viewWish.class);
+        startActivity(intent);
     }
 }
