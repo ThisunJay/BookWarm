@@ -5,14 +5,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.RequiresPermission;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import Model.BookInfo;
 import Model.RBooks;
 import Model.Users;
+import Model.WishList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -49,7 +52,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.execSQL(create_table_category);
         //end osanda's methods
-
+        //=================AAdi===================================
         String create_table_Read = "CREATE TABLE " + BookWormMaster.ReadBook.TABLE_RBOOK + " ("+
                 BookWormMaster.ReadBook._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.ReadBook.COLUMN_RNAME + " TEXT, " +
@@ -60,12 +63,16 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.execSQL(create_table_Read);
         Log.i( "DB" , create_table_Read );
-
-        String create_table_wishList = "CREATE TABLE " + BookWormMaster.AddWishList.TABLE_WList + " ("+
-                BookWormMaster.AddWishList._ID + "INTEGER PRIMARY KEY, " +
+//======================kavi============================================
+        String create_table_wishList = "CREATE TABLE " + BookWormMaster.AddWishList.TABLE_WLIST + " ("+
+                BookWormMaster.AddWishList._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.AddWishList.COLUMN_Title + " TEXT, " +
-                BookWormMaster.AddWishList.COLUMN_Author + " TEXT " +
-                BookWormMaster.AddWishList.COLUMN_Price + " TEXT ); ";
+                BookWormMaster.AddWishList.COLUMN_Author + " TEXT, " +
+                BookWormMaster.AddWishList.COLUMN_Price + " TEXT );";
+
+        db.execSQL(create_table_wishList);
+        //Log.i( "DB" , create_table_wishList );
+
     }
 
     @Override
@@ -125,6 +132,16 @@ public class DBHandler extends SQLiteOpenHelper {
         db.delete(BookWormMaster.Category.TABLE_NAME_CAT , Selection , SelectionArgs );
     }
 
+    public void deleteRead(int id){
+        SQLiteDatabase db = getReadableDatabase();
+
+        String Selection = BookWormMaster.ReadBook._ID + " = ?";
+        String[] SelectionArgs = { String.valueOf(id) };
+
+        db.delete(BookWormMaster.ReadBook.TABLE_RBOOK , Selection ,SelectionArgs );
+        Log.i( "DB", "Delete : " + id );
+    }
+
     public void userUpdate(String username ){
         SQLiteDatabase db  = getReadableDatabase();
 
@@ -159,7 +176,7 @@ public class DBHandler extends SQLiteOpenHelper {
             return false;
         }
     }
-
+//================================AAdi==========================
     public boolean addReadB(String name,String author,String dfrom,String dtill,String genre){
 
         SQLiteDatabase db = getWritableDatabase();
@@ -193,7 +210,7 @@ public class DBHandler extends SQLiteOpenHelper {
         contentValues.put(BookWormMaster.AddWishList.COLUMN_Author,Author);
         contentValues.put(BookWormMaster.AddWishList.COLUMN_Price, Price);
 
-        long result = db.insert(BookWormMaster.AddWishList.TABLE_WList,null,contentValues);
+        long result = db.insert(BookWormMaster.AddWishList.TABLE_WLIST,null,contentValues);
 
         if(result > 0){
             return true;
@@ -205,10 +222,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    //Adi---------------------------------------------------------------------------------------------
+    //-----------------Adi---------------------------------------------------------------------------------------------
     public ArrayList<RBooks> readAllRbooks() {
         SQLiteDatabase db = getReadableDatabase();
-        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME};
+        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME , BookWormMaster.ReadBook._ID };
 
         String sortOrder = BookWormMaster.ReadBook.COLUMN_RNAME;
 
@@ -220,7 +237,9 @@ public class DBHandler extends SQLiteOpenHelper {
             RBooks book = new RBooks();
             String bookName = values.getString( values.getColumnIndexOrThrow( BookWormMaster.ReadBook.COLUMN_RNAME ));
             book.setName( bookName);
+            book.setID( values.getInt( values.getColumnIndexOrThrow(BookWormMaster.ReadBook._ID) )  );
             books.add( book );
+
 
         }
         return books;
@@ -244,6 +263,26 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
         return books;
+    }
+
+    public ArrayList<WishList> readAllWishList(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        String[] projection = {BookWormMaster.AddWishList.COLUMN_Title};
+
+        String sortOrder = BookWormMaster.AddWishList.COLUMN_Title;
+
+        Cursor values = db.query(BookWormMaster.AddWishList.TABLE_WLIST,projection,null,null,null,null,sortOrder);
+
+        ArrayList<WishList> wishLists = new ArrayList<WishList>();
+
+        while (values.moveToNext()){
+            WishList wish = new WishList();
+            String title = values.getString( values.getColumnIndexOrThrow( BookWormMaster.AddWishList.COLUMN_Title));
+            wish.setTitle(title);
+            wishLists.add(wish);
+        }
+        return wishLists;
     }
 
 
