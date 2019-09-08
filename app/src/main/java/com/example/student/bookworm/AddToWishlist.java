@@ -52,6 +52,8 @@ public class AddToWishlist extends AppCompatActivity {
 
         if(result == true){
             Toast.makeText(getApplicationContext(),"Added to Wish List", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this,wishList.class);
+            startActivity(intent);
         }
         else {
             Toast.makeText(getApplicationContext(), "Adding Failed ",Toast.LENGTH_LONG).show();
