@@ -1,10 +1,13 @@
 package com.example.student.bookworm;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -13,8 +16,8 @@ import Adapters.RAdapter;
 import Database.DBHandler;
 import Model.RBooks;
 
-public class ReadingActivity extends AppCompatActivity {
-
+public class ReadingActivity extends AppCompatActivity implements RAdapter.OnReadingListener{
+    private ArrayList<RBooks> arrayList;
     DBHandler db;
     RecyclerView rv;
     @Override
@@ -24,13 +27,11 @@ public class ReadingActivity extends AppCompatActivity {
 
         db = new DBHandler(this);
 
-        ArrayList<RBooks> arrayList = db.readAllRbooks();
+        arrayList = db.readAllRbooks();
         rv = findViewById(R.id.rviewC);
-        RAdapter adapter = new RAdapter(arrayList);
+        RAdapter adapter = new RAdapter(arrayList,this);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
-
-
     }
 
     public void onAdd(View view){
@@ -51,5 +52,12 @@ public class ReadingActivity extends AppCompatActivity {
     public void onBack(View view){
         Intent intent1 = new Intent(ReadingActivity.this,MainActivity.class);
         startActivity(intent1);
+    }
+
+    @Override
+    public void OnReadingClick(int position) {
+        arrayList.get(position);
+        Intent intent = new Intent(this,InReadingAct.class);
+        startActivity(intent);
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".updateReview"
-    android:background="@drawable/tttbackground"
+    android:background="@drawable/backgnew"
     >
 
     <ImageView
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.098" />
 
     <EditText
-        android:id="@+id/ttv30"
+        android:id="@+id/etv30"
         android:layout_width="298dp"
         android:layout_height="276dp"
         android:layout_marginStart="16dp"

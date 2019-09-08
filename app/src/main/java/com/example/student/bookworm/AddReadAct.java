@@ -17,9 +17,10 @@ import java.util.Date;
 import java.util.TimeZone;
 
 
+import Adapters.RAdapter;
 import Database.DBHandler;
 
-public class AddReadAct extends AppCompatActivity {
+public class AddReadAct extends AppCompatActivity  {
     DBHandler adb;
     EditText txtname,txtauth,txtrfrom,txtrtill,txtgenre;
     private String Name;
@@ -128,6 +129,5 @@ public class AddReadAct extends AppCompatActivity {
         Intent intent1 = new Intent(AddReadAct.this,ReadingActivity.class);
         startActivity(intent1);
     }
-
 
 }

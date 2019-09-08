@@ -19,16 +19,18 @@ import Model.RBooks;
 public class RAdapter  extends RecyclerView.Adapter<RAdapter.RAdapterViewHolder> {
 
     private ArrayList<RBooks> arrayList;
+    private OnReadingListener rOnReadingListner;
 
-    public RAdapter(ArrayList<RBooks> arrayList) {
+    public RAdapter(ArrayList<RBooks> arrayList,OnReadingListener onReadingListener) {
         this.arrayList = arrayList;
+        this.rOnReadingListner = onReadingListener;
     }
 
     @NonNull
     @Override
     public RAdapter.RAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from( viewGroup.getContext() ).inflate( R.layout.reading_list , viewGroup , false);
-        return new RAdapterViewHolder(view);
+        return new RAdapterViewHolder(view,rOnReadingListner);
     }
 
     @Override
@@ -43,14 +45,26 @@ public class RAdapter  extends RecyclerView.Adapter<RAdapter.RAdapterViewHolder>
         return arrayList.size();
     }
 
-    public class RAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class RAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
-        public RAdapterViewHolder(@NonNull View itemView) {
+        OnReadingListener onReadingListener;
+        public RAdapterViewHolder(@NonNull View itemView, OnReadingListener onReadingListener) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
+            this.onReadingListener = onReadingListener;
 
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onReadingListener.OnReadingClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnReadingListener{
+        void OnReadingClick(int position);
     }
 
 
