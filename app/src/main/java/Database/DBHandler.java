@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+import Model.BookInfo;
 import Model.RBooks;
 import Model.Users;
 
@@ -25,6 +26,8 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+
+        //Thisun's bookinfo table creation
         String create_table_bookinfo = "CREATE TABLE " + BookWormMaster.Book.TABLE_NAME + " (" +
                 BookWormMaster.Book._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.Book.COLUMN_NAME_TITLE + " TEXT, " +
@@ -37,6 +40,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 BookWormMaster.Book.COLUMN_NAME_REVIEW + " TEXT);";
 
         db.execSQL(create_table_bookinfo);
+        // End of Thisun's block
 
         //osanda's create table method
         String create_table_category = "CREATE TABLE " + BookWormMaster.Category.TABLE_NAME_CAT + " ("+
@@ -70,6 +74,7 @@ public class DBHandler extends SQLiteOpenHelper {
        // onCreate(db);
     }
 
+    //Thisun's add book method to add book information to the table
     public boolean addBook(String title, String author, String price, String pages, String review){
 
         SQLiteDatabase db = getWritableDatabase();
@@ -91,7 +96,7 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
     }
-
+    //end of thisun's method
 
     //==================================OSANDA's display catogory method | Do not edit this=============================
     public ArrayList<Users> readAllInfor() {
@@ -218,6 +223,26 @@ public class DBHandler extends SQLiteOpenHelper {
             books.add( book );
 
         }
+        return books;
+    }
+
+    public ArrayList<BookInfo> readAllBookinfo(){
+        SQLiteDatabase db = getReadableDatabase();
+        String[] projection = {BookWormMaster.Book.COLUMN_NAME_TITLE};
+
+        String sortOrder = BookWormMaster.Book.COLUMN_NAME_TITLE;
+
+        Cursor values = db.query(BookWormMaster.Book.TABLE_NAME, projection, null, null, null, null, sortOrder);
+
+        ArrayList<BookInfo> books = new ArrayList<BookInfo>();
+
+        while(values.moveToNext()){
+            BookInfo book = new BookInfo();
+            String bookTitle = values.getString(values.getColumnIndexOrThrow(BookWormMaster.Book.COLUMN_NAME_TITLE));
+            book.setTitle(bookTitle);
+            books.add(book);
+        }
+
         return books;
     }
 
