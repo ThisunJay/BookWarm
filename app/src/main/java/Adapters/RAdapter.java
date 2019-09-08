@@ -59,6 +59,7 @@ public class RAdapter  extends RecyclerView.Adapter<RAdapter.RAdapterViewHolder>
 
         @Override
         public void onClick(View view) {
+
             onReadingListener.OnReadingClick(getAdapterPosition());
         }
     }

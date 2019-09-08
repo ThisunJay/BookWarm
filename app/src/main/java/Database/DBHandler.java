@@ -5,14 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.RequiresPermission;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import Model.BookInfo;
+import Model.Category;
 import Model.RBooks;
 import Model.Users;
 import Model.WishList;
@@ -124,12 +122,17 @@ public class DBHandler extends SQLiteOpenHelper {
         return users;
     }
 
-    public void deleteuser(String username){
+    public boolean deleteuser(String username){
         SQLiteDatabase db = getReadableDatabase();
         String Selection = BookWormMaster.Category.COLUMN_NAME_CATNAME + " LIKE ?";
         String[] SelectionArgs = { username };
 
-        db.delete(BookWormMaster.Category.TABLE_NAME_CAT , Selection , SelectionArgs );
+        long result  = db.delete(BookWormMaster.Category.TABLE_NAME_CAT , Selection , SelectionArgs );
+        if(result > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void deleteRead(int id){
@@ -142,7 +145,7 @@ public class DBHandler extends SQLiteOpenHelper {
         Log.i( "DB", "Delete : " + id );
     }
 
-    public void userUpdate(String username ){
+    public boolean userUpdate(String username ){
         SQLiteDatabase db  = getReadableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -152,9 +155,68 @@ public class DBHandler extends SQLiteOpenHelper {
         Log.i("DB" , Selection  );
         String[] SelectionArgs = { username };
 
-        db.update(BookWormMaster.Category.TABLE_NAME_CAT ,contentValues , Selection , SelectionArgs);
+        long result  =db.update(BookWormMaster.Category.TABLE_NAME_CAT ,contentValues , Selection , SelectionArgs);
+
+        if(result > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public boolean addCategoryOsu(String name){
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(BookWormMaster.Category.COLUMN_NAME_CATNAME,name);
+
+
+        long result = db.insert(BookWormMaster.Category.TABLE_NAME_CAT,null,contentValues);
+
+        if (result > 0){
+            return true;
+        }else {
+            return false;
+        }
 
     }
+    public ArrayList<Category> readAllCategoriesOsa() {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] projection = {BookWormMaster.Category.COLUMN_NAME_CATNAME , BookWormMaster.Category._ID };
+
+        String sortOrder = BookWormMaster.Category.COLUMN_NAME_CATNAME;
+
+        Cursor values = db.query(BookWormMaster.Category.TABLE_NAME_CAT ,projection,null,null,null,null,sortOrder);
+
+        ArrayList<Category> CATEGORIES = new ArrayList<Category>();
+
+        while (values.moveToNext()){
+            Category category = new Category();
+            String categoryname = values.getString( values.getColumnIndexOrThrow( BookWormMaster.Category.COLUMN_NAME_CATNAME ));
+            category.setUname( categoryname);
+            category.setID( values.getInt( values.getColumnIndexOrThrow(BookWormMaster.Category._ID) )  );
+            CATEGORIES.add( category );
+
+
+        }
+        return CATEGORIES;
+    }
+
     //=========================================OSANDA's display methos is over==============================
 
 

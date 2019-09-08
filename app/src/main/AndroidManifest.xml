@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".OsaAddCategory"></activity>
+        <activity android:name=".DashboardModernCategory" />
         <activity android:name=".SplashAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +20,6 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".BooksMain" />
-        <activity android:name=".Categories" />
-        <activity android:name=".AddCategory" />
-        <activity android:name=".DeleteCategory" />
         <activity android:name=".AddBook" />
         <activity android:name=".ViewBook" />
         <activity android:name=".ReadingActivity" />
@@ -32,8 +31,6 @@
         <activity android:name=".SugAct" />
         <activity android:name=".CheckBook" />
         <activity android:name=".InReadingAct" />
-        <activity android:name=".CategorySettings" />
-        <activity android:name=".UpdateCategory" />
     </application>
 
 </manifest>

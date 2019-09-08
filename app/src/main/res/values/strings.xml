@@ -14,10 +14,10 @@
     </string-array>
 
     <!--<resources>-->
-        <!--<string name="">Recycler Swipe</string>-->
-        <!--<string name="action_settings">Settings</string>-->
-        <!--<string name="my_cart">My Cart</string>-->
-        <!--<string name="delete">DELETE</string>-->
+    <!--<string name="">Recycler Swipe</string>-->
+    <!--<string name="action_settings">Settings</string>-->
+    <!--<string name="my_cart">My Cart</string>-->
+    <!--<string name="delete">DELETE</string>-->
     <!--</resources>-->
 
     <string-array name="UpdateCat">

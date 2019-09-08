@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goTo(View v){
-        Intent myItent = new Intent(MainActivity.this,Categories.class);
+        Intent myItent = new Intent(MainActivity.this,DashboardModernCategory.class);
         startActivity(myItent);
     }
 
