@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.RequiresPermission;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -119,6 +120,14 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.delete(BookWormMaster.Category.TABLE_NAME_CAT , Selection , SelectionArgs );
     }
+
+//    public void deleteRead(String username){
+//        SQLiteDatabase db = getReadableDatabase();
+//        String Selection = BookWormMaster.ReadBook.COLUMN_RNAME + " LIKE ? ";
+//        String[] SelectionArgs = {username};
+//
+//        db.delete(BookWormMaster.ReadBook.TABLE_RBOOK , Selection ,SelectionArgs);
+//    }
 
     public void userUpdate(String username ){
         SQLiteDatabase db  = getReadableDatabase();

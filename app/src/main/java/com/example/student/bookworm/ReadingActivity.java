@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,8 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
     private ArrayList<RBooks> arrayList;
     DBHandler db;
     RecyclerView rv;
+    EditText txt_name;
+    RAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +32,11 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
 
         arrayList = db.readAllRbooks();
         rv = findViewById(R.id.rviewC);
-        RAdapter adapter = new RAdapter(arrayList,this);
+         adapter = new RAdapter(arrayList,this);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
+
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(rv);
     }
 
     public void onAdd(View view){
@@ -60,4 +65,19 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
         Intent intent = new Intent(this,InReadingAct.class);
         startActivity(intent);
     }
+
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+            arrayList.remove(viewHolder.getAdapterPosition());
+            adapter.notifyDataSetChanged();
+        }
+    };
+
+
 }
