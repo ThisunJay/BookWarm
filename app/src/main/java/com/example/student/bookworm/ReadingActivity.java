@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -74,8 +75,14 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-            arrayList.remove(viewHolder.getAdapterPosition());
-            adapter.notifyDataSetChanged();
+
+             int deleteid = arrayList.get(viewHolder.getAdapterPosition()).getID();
+             db.deleteRead(deleteid);
+             Toast.makeText(getApplicationContext(),"Deleted!",Toast.LENGTH_LONG).show();
+
+
+//            arrayList.remove(viewHolder.getAdapterPosition());
+//            adapter.notifyDataSetChanged();
         }
     };
 

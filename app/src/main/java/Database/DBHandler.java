@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.RequiresPermission;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -121,13 +122,15 @@ public class DBHandler extends SQLiteOpenHelper {
         db.delete(BookWormMaster.Category.TABLE_NAME_CAT , Selection , SelectionArgs );
     }
 
-//    public void deleteRead(String username){
-//        SQLiteDatabase db = getReadableDatabase();
-//        String Selection = BookWormMaster.ReadBook.COLUMN_RNAME + " LIKE ? ";
-//        String[] SelectionArgs = {username};
-//
-//        db.delete(BookWormMaster.ReadBook.TABLE_RBOOK , Selection ,SelectionArgs);
-//    }
+    public void deleteRead(int id){
+        SQLiteDatabase db = getReadableDatabase();
+
+        String Selection = BookWormMaster.ReadBook._ID + " = ?";
+        String[] SelectionArgs = { String.valueOf(id) };
+
+        db.delete(BookWormMaster.ReadBook.TABLE_RBOOK , Selection ,SelectionArgs );
+        Log.i( "DB", "Delete : " + id );
+    }
 
     public void userUpdate(String username ){
         SQLiteDatabase db  = getReadableDatabase();
@@ -212,7 +215,7 @@ public class DBHandler extends SQLiteOpenHelper {
     //Adi---------------------------------------------------------------------------------------------
     public ArrayList<RBooks> readAllRbooks() {
         SQLiteDatabase db = getReadableDatabase();
-        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME};
+        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME , BookWormMaster.ReadBook._ID };
 
         String sortOrder = BookWormMaster.ReadBook.COLUMN_RNAME;
 
@@ -224,7 +227,9 @@ public class DBHandler extends SQLiteOpenHelper {
             RBooks book = new RBooks();
             String bookName = values.getString( values.getColumnIndexOrThrow( BookWormMaster.ReadBook.COLUMN_RNAME ));
             book.setName( bookName);
+            book.setID( values.getInt( values.getColumnIndexOrThrow(BookWormMaster.ReadBook._ID) )  );
             books.add( book );
+
 
         }
         return books;
