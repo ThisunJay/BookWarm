@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
         db = new DBHandler(this);
 
         arrayList = db.readAllRbooks();
+        Log.i("DB" , arrayList.size() + "Size ");
         rv = findViewById(R.id.rviewC);
          adapter = new RAdapter(arrayList,this);
         rv.setLayoutManager(new LinearLayoutManager(this));
