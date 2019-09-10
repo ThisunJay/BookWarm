@@ -22,4 +22,15 @@ public class SugAct extends AppCompatActivity {
         Intent intent1 = new Intent(SugAct.this,ReadingActivity.class);
         startActivity(intent1);
     }
-}
+
+    public void onMaze(View view){
+        Intent intent = new Intent(this,CheckBook.class);
+        startActivity(intent);
+    }
+    public void onGot(View view){
+        Intent intent = new Intent(this,chechBook2.class);
+        startActivity(intent);
+        }
+
+    }
+

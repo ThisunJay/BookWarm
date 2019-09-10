@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/backgnew"
     android:layout_height="match_parent"
-    tools:context=".CheckBook">
+    tools:context=".chechBook2"
+    android:background="@drawable/backgnew">
 
     <ImageView
         android:id="@+id/imageView27"
@@ -26,18 +26,34 @@
         app:srcCompat="@drawable/backbtn" />
 
     <ImageView
-        android:layout_width="243dp"
-        android:layout_height="311dp"
+        android:layout_width="225dp"
+        android:layout_height="275dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/maze"
+        android:src="@drawable/got"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.207" />
+        app:layout_constraintVertical_bias="0.227" />
+    <!--<ImageButton-->
+        <!--android:id="@+id/imageButton16"-->
+        <!--android:layout_width="255dp"-->
+        <!--android:layout_height="274dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.222"-->
+        <!--app:srcCompat="@drawable/got"-->
+        <!--/>-->
 
     <TextView
         android:id="@+id/atv2"
@@ -47,7 +63,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Maze Runner"
+        android:text="Game of Throness"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
@@ -65,7 +81,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="The Death Cure is a 2011 young adult dystopian science fiction novel written by American writer James Dashner and the third book published in the Maze Runner series (the fifth and last in narrative order).[1] It was published on 11 October 2011 by Delacorte Press and was preceded in publication order by The Maze Runner and The Scorch Trials and followed by the series prequels, The Kill Order and The Fever Code. In narrative order, it is the last book in the series. "
+        android:text="@string/ttv17"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,5 +105,7 @@
         app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintVertical_bias="0.959"
+        />
+
 </android.support.constraint.ConstraintLayout>
