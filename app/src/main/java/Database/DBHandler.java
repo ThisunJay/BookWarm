@@ -29,6 +29,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
         //Thisun's bookinfo table creation
+
         String create_table_bookinfo = "CREATE TABLE " + BookWormMaster.Book.TABLE_NAME + " (" +
                 BookWormMaster.Book._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.Book.COLUMN_NAME_TITLE + " TEXT, " +
@@ -44,13 +45,16 @@ public class DBHandler extends SQLiteOpenHelper {
         // End of Thisun's block
 
         //osanda's create table method
+
         String create_table_category = "CREATE TABLE " + BookWormMaster.Category.TABLE_NAME_CAT + " ("+
                 BookWormMaster.Category._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.Category.COLUMN_NAME_CATNAME + " TEXT);";
 
         db.execSQL(create_table_category);
         //end osanda's methods
+
         //=================AAdi===================================
+
         String create_table_Read = "CREATE TABLE " + BookWormMaster.ReadBook.TABLE_RBOOK + " ("+
                 BookWormMaster.ReadBook._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.ReadBook.COLUMN_RNAME + " TEXT, " +
@@ -61,7 +65,9 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.execSQL(create_table_Read);
         Log.i( "DB" , create_table_Read );
-//======================kavi============================================
+
+        //======================kavi============================================
+
         String create_table_wishList = "CREATE TABLE " + BookWormMaster.AddWishList.TABLE_WLIST + " ("+
                 BookWormMaster.AddWishList._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.AddWishList.COLUMN_Title + " TEXT, " +
@@ -104,6 +110,7 @@ public class DBHandler extends SQLiteOpenHelper {
     //end of thisun's method
 
     //==================================OSANDA's display catogory method | Do not edit this=============================
+
     public ArrayList<Users> readAllInfor() {
         SQLiteDatabase db = getReadableDatabase();
         String[] projection = {BookWormMaster.Category._ID,BookWormMaster.Category.COLUMN_NAME_CATNAME};
@@ -159,13 +166,22 @@ public class DBHandler extends SQLiteOpenHelper {
 
         if(result > 0){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
+//======================kavi=============================================================================
 
+    public void deleteWish(int id){
+        SQLiteDatabase db = getReadableDatabase();
 
+        String Selection = BookWormMaster.AddWishList._ID + " = ?";
+        String[] SelectionArgs = { String.valueOf(id)};
 
+        db.delete(BookWormMaster.AddWishList.TABLE_WLIST , Selection ,SelectionArgs );
+        Log.i("DB", "REMOVED" +id);
+    }
 
 
 
@@ -327,14 +343,16 @@ public class DBHandler extends SQLiteOpenHelper {
         return books;
     }
 
+    //-----------------kavi---------------------------------------------------------------------------------------------
+
     public ArrayList<WishList> readAllWishList(){
         SQLiteDatabase db = getReadableDatabase();
 
-        String[] projection = {BookWormMaster.AddWishList.COLUMN_Title};
+        String[] projection = {BookWormMaster.AddWishList.COLUMN_Title, BookWormMaster.AddWishList._ID};
 
         String sortOrder = BookWormMaster.AddWishList.COLUMN_Title;
 
-        Cursor values = db.query(BookWormMaster.AddWishList.TABLE_WLIST,projection,null,null,null,null,sortOrder);
+        Cursor values = db.query(BookWormMaster.AddWishList.TABLE_WLIST ,projection,null,null,null,null,sortOrder);
 
         ArrayList<WishList> wishLists = new ArrayList<WishList>();
 
@@ -342,6 +360,7 @@ public class DBHandler extends SQLiteOpenHelper {
             WishList wish = new WishList();
             String title = values.getString( values.getColumnIndexOrThrow( BookWormMaster.AddWishList.COLUMN_Title));
             wish.setTitle(title);
+            wish.setId( values.getInt( values.getColumnIndexOrThrow(BookWormMaster.AddWishList._ID) )  );
             wishLists.add(wish);
         }
         return wishLists;

@@ -52,4 +52,6 @@ public class WishList {
     public void setPrice(double price) {
         this.price = price;
     }
+
+
 }
