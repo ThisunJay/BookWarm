@@ -17,18 +17,18 @@ import Model.Category;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryAdapterViewHolder> {
 
     private ArrayList<Category> arrayList;
-    private OnReadingListener OsaOnReadingListner;
+    //private OnReadingListener OsaOnReadingListner;
 
-    public CategoryAdapter(ArrayList<Category> arrayList, OnReadingListener OsaOnReadingListner) {
+    public CategoryAdapter(ArrayList<Category> arrayList) {
         this.arrayList = arrayList;
-        this.OsaOnReadingListner = OsaOnReadingListner;
+        //this.OsaOnReadingListner = OsaOnReadingListner;
     }
 
     @NonNull
     @Override
     public CategoryAdapter.CategoryAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from( viewGroup.getContext() ).inflate( R.layout.categorylist , viewGroup , false);
-        return new CategoryAdapterViewHolder(view,OsaOnReadingListner);    }
+        return new CategoryAdapterViewHolder(view);    }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAdapterViewHolder categoryAdapterViewHolder, int i) {
@@ -42,24 +42,24 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return arrayList.size();
     }
 
-    public class CategoryAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class CategoryAdapterViewHolder extends RecyclerView.ViewHolder{
         TextView name;
-        OnReadingListener OsaOnReadingListner;
-        public CategoryAdapterViewHolder(@NonNull View itemView, OnReadingListener OsaOnReadingListner) {
+        //OnReadingListener OsaOnReadingListner;
+        public CategoryAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_nameOSA);
-            this.OsaOnReadingListner = OsaOnReadingListner;
+            //this.OsaOnReadingListner = OsaOnReadingListner;
 
-            itemView.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View view) {
-            OsaOnReadingListner.OnReadingClick(getAdapterPosition());
-        }
+//        @Override
+//        //public void onClick(View view) {
+//            OsaOnReadingListner.OnReadingClick(getAdapterPosition());
+//        }
     }
 
-    public interface OnReadingListener {
-        void OnReadingClick(int position);
-    }
+//    public interface OnReadingListener {
+//        void OnReadingClick(int position);
+//    }
 }

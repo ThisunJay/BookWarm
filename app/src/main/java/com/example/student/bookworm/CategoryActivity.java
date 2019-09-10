@@ -17,55 +17,44 @@ import Adapters.CategoryAdapter;
 import Database.DBHandler;
 import Model.Category;
 
-public class CategoryActivity extends AppCompatActivity implements CategoryAdapter.OnReadingListener {
+public class CategoryActivity extends AppCompatActivity{
 
-    private ArrayList<Category> arrayList;
-    DBHandler db;
-    RecyclerView rvosa;
-    CategoryAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading);
 
-        db = new DBHandler(this);
 
-        arrayList = db.readAllCategoriesOsa();
-        Log.i("DB" , arrayList.size() + "Size ");
-        rvosa = findViewById(R.id.rviewOsa);
-        adapter = new CategoryAdapter(arrayList,this);
-        rvosa.setLayoutManager(new LinearLayoutManager(this));
-        rvosa.setAdapter(adapter);
 
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(rvosa);
+        //new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(rvosa);
     }
 
-    @Override
-    public void OnReadingClick(int position) {
-        arrayList.get(position);
-//        Intent intent = new Intent(this,InReadingAct.class);
-//        startActivity(intent);
-    }
+//    @Override
+//    public void OnReadingClick(int position) {
+//        arrayList.get(position);
+////        Intent intent = new Intent(this,InReadingAct.class);
+////        startActivity(intent);
+//    }
 
-    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
-            return false;
-        }
+//    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+//        @Override
+//        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
+//            return false;
+//        }
 
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-
-            int deleteid = arrayList.get(viewHolder.getAdapterPosition()).getID();
-            db.deleteRead(deleteid);
-            Toast.makeText(getApplicationContext(),"Deleted!",Toast.LENGTH_LONG).show();
-
-
-//            arrayList.remove(viewHolder.getAdapterPosition());
-//            adapter.notifyDataSetChanged();
-        }
-    };
+//        @Override
+//        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+//
+//            int deleteid = arrayList.get(viewHolder.getAdapterPosition()).getID();
+//            db.deleteRead(deleteid);
+//            Toast.makeText(getApplicationContext(),"Deleted!",Toast.LENGTH_LONG).show();
+//
+//
+////            arrayList.remove(viewHolder.getAdapterPosition());
+////            adapter.notifyDataSetChanged();
+//        }
+    //};
 
 
 }
