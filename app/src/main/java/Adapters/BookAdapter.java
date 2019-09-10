@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.student.bookworm.R;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -17,11 +19,11 @@ import Model.BookInfo;
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookAdapterViewHolder> {
 
     private ArrayList<BookInfo> arrayList;
-   // private BookAdapter.OnReadingListener rOnReadingListner;
+    private onBookListner onBook;
 
-    public BookAdapter(ArrayList<BookInfo> arrayList) {
+    public BookAdapter(ArrayList<BookInfo> arrayList, onBookListner onBook) {
         this.arrayList = arrayList;
-        //this.rOnReadingListner = onReadingListener;
+        this.onBook = onBook;
     }
 
     @NonNull
@@ -30,7 +32,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookAdapterVie
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.booklist, viewGroup, false);
 
-        return new BookAdapterViewHolder(v);
+        return new BookAdapterViewHolder(v, onBook);
     }
 
     @Override
@@ -44,24 +46,30 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookAdapterVie
         return arrayList.size();
     }
 
-    public class BookAdapterViewHolder extends RecyclerView.ViewHolder{
+    public class BookAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
 
         TextView name;
-        //OnReadingListener onReadingListener;
+        onBookListner onBookListner;
 
-        public BookAdapterViewHolder(@NonNull View itemView) {
+
+        public BookAdapterViewHolder(@NonNull View itemView, onBookListner onBookListner) {
             super(itemView);
             name = itemView.findViewById(R.id.titleView);
-           // this.onReadingListener = onReadingListener;
-            //itemView.setOnClickListener(this);
+            this.onBookListner = onBookListner;
+            itemView.setOnClickListener(this);
 
         }
 
+        @Override
+        public void onClick(View view){
+            onBookListner.OnBookClick(getAdapterPosition());
 
+        }
     }
 
-//    public interface OnReadingListener{
-//        void OnReadingClick(int position);
-//    }
+    public interface onBookListner{
+       void OnBookClick(int position);
+    }
 
 }

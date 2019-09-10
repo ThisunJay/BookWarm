@@ -2,6 +2,6 @@
 <resources>
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#182C61</color>
-    <color name="colorAccent">#aea7a7</color>
+    <color name="colorAccent">#05023A</color>
     <color name="splashTxt">#ffffff</color>
 </resources>

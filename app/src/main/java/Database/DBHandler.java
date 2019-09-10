@@ -152,6 +152,17 @@ public class DBHandler extends SQLiteOpenHelper {
         Log.i( "DB", "Delete : " + id );
     }
 
+    public void deleteBook(int id){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        String Selection = BookWormMaster.Book._ID + " = ?";
+        String[] SelectionArgs = { String.valueOf(id) };
+
+        db.delete(BookWormMaster.Book.TABLE_NAME, Selection, SelectionArgs);
+        Log.i("DB", "Delete : " + id);
+    }
+
     public boolean userUpdate(String username ){
         SQLiteDatabase db  = getReadableDatabase();
 
@@ -233,7 +244,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return CATEGORIES;
     }
 
-    //=========================================OSANDA's display methos is over==============================
+    //=========================================OSANDA's display method is over==============================
 
 
 
@@ -325,7 +336,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public ArrayList<BookInfo> readAllBookinfo(){
         SQLiteDatabase db = getReadableDatabase();
-        String[] projection = {BookWormMaster.Book.COLUMN_NAME_TITLE};
+        String[] projection = {BookWormMaster.Book.COLUMN_NAME_TITLE , BookWormMaster.Book._ID };
 
         String sortOrder = BookWormMaster.Book.COLUMN_NAME_TITLE;
 
@@ -335,8 +346,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
         while(values.moveToNext()){
             BookInfo book = new BookInfo();
+
             String bookTitle = values.getString(values.getColumnIndexOrThrow(BookWormMaster.Book.COLUMN_NAME_TITLE));
             book.setTitle(bookTitle);
+            book.setID(values.getInt( values.getColumnIndexOrThrow(BookWormMaster.Book._ID)));
             books.add(book);
         }
 
