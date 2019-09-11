@@ -24,6 +24,11 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishAdapterVie
 
         }
 
+        public void setArrayList(ArrayList<WishList> arrayList) {
+            this.arrayList = arrayList;
+            notifyDataSetChanged();
+        }
+
 
     @NonNull
     @Override

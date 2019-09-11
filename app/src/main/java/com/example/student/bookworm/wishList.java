@@ -18,7 +18,7 @@ import Adapters.WishAdapter;
 import Database.DBHandler;
 import Model.WishList;
 
-public class wishList extends AppCompatActivity {
+public class wishList extends AppCompatActivity implements WishAdapter.OnWishingListener{
     private ArrayList<WishList> arrayList;
     DBHandler db;
     RecyclerView rv;
@@ -32,12 +32,14 @@ public class wishList extends AppCompatActivity {
 //
         db = new DBHandler(this);
 
+        arrayList = db.readAllWishList();
+
         rv = findViewById(R.id.recycle1);
         rv.setLayoutManager( new LinearLayoutManager(this));
 
         ArrayList<WishList> arrayList =  db.readAllWishList();
         Log.i("DB" , arrayList.size() + "Size ");
-        WishAdapter adapter  = new WishAdapter(arrayList);
+        adapter  = new WishAdapter(arrayList);
         rv.setAdapter(adapter);
 
         new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(rv);
@@ -53,7 +55,7 @@ public class wishList extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    @Override
     public void OnWishingClick(int position){
         arrayList.get(position);
         Intent intent = new Intent(this,viewWish.class);
@@ -69,7 +71,11 @@ public class wishList extends AppCompatActivity {
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
             int deleteID = arrayList.get(viewHolder.getAdapterPosition()).getId();
             db.deleteWish(deleteID);
-            Toast.makeText(getApplicationContext(),"REMOVED",Toast.LENGTH_LONG).show();
+
+            arrayList.remove(viewHolder.getAdapterPosition());
+            adapter.setArrayList(arrayList);
+
+            Toast.makeText(getApplicationContext(),"Deleted",Toast.LENGTH_LONG).show();
 
          //  arrayList.remove(viewHolder.getAdapterPosition());
            //adapter.notifyDataSetChanged();
