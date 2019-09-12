@@ -1,27 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_height="150dp"
+    android:orientation="horizontal"
+    android:layout_margin="0dp">
 
-    <TextView
-        android:id="@+id/tv_nameOSA"
-        android:layout_width="301dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
 
-        android:background="#d8d8d8"
-        android:padding="5dp"
-        android:text="Empty name"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/OSAdeletebtn"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/done" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="15dp"
+            >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/math" />
+
+                <TextView
+                    android:id="@+id/tv_nameOSA"
+                    android:layout_width="153dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+
+                    android:background="#FFFFFF"
+                    android:padding="5dp"
+                    android:text="Empty name"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/deletebut" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+    <!--<ImageView-->
+    <!--android:id="@+id/OSAdeletebtn"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:srcCompat="@drawable/done" />-->
 
 </LinearLayout>

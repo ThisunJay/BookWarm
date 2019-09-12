@@ -47,8 +47,8 @@ public class OsaAddCategory extends AppCompatActivity {
 
         if(result == true){
             Toast.makeText(getApplicationContext(),"Success!",Toast.LENGTH_LONG).show();
-//            Intent intent = new Intent(this, DashboardModernCategory.class);
-//            startActivity(intent);
+          Intent intent = new Intent(this, DashboardModernCategory.class);
+           startActivity(intent);
         }else{
             Toast.makeText(getApplicationContext(),"Failed!",Toast.LENGTH_LONG).show();
         }
@@ -72,6 +72,10 @@ public class OsaAddCategory extends AppCompatActivity {
 
     public void goBack(View v){
         Intent myItent = new Intent(this,DashboardModernCategory.class);
+        startActivity(myItent);
+    }
+    public void goModify(View v){
+        Intent myItent = new Intent(this,DashboardModify.class);
         startActivity(myItent);
     }
 }
