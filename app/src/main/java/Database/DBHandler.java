@@ -340,7 +340,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public ArrayList<BookInfo> readAllBookinfo(){
         SQLiteDatabase db = getReadableDatabase();
-        String[] projection = {BookWormMaster.Book.COLUMN_NAME_TITLE , BookWormMaster.Book._ID };
+        String[] projection = {BookWormMaster.Book.COLUMN_NAME_TITLE , BookWormMaster.Book._ID, BookWormMaster.Book.COLUMN_NAME_REVIEW };
 
         String sortOrder = BookWormMaster.Book.COLUMN_NAME_TITLE;
 
@@ -350,10 +350,11 @@ public class DBHandler extends SQLiteOpenHelper {
 
         while(values.moveToNext()){
             BookInfo book = new BookInfo();
-
             String bookTitle = values.getString(values.getColumnIndexOrThrow(BookWormMaster.Book.COLUMN_NAME_TITLE));
+            String bookReview = values.getString(values.getColumnIndexOrThrow(BookWormMaster.Book.COLUMN_NAME_REVIEW));
             book.setTitle(bookTitle);
             book.setID(values.getInt( values.getColumnIndexOrThrow(BookWormMaster.Book._ID)));
+            book.setReview(bookReview);
             books.add(book);
         }
 

@@ -61,10 +61,17 @@ public class BooksMain extends AppCompatActivity implements BookAdapter.onBookLi
     @Override
     public void OnBookClick(int position) {
         b = arrayList.get(position);
+        //RecyclerView.ViewHolder viw = null;
+        //int i = arrayList.get(rv.getAdapterPosition()).getID();
+
+        //String rev = b.getReview();
+
+        //int i = b.getID();
+        //Toast.makeText(getApplicationContext(), b.getID() + " ", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this,ViewBook.class);
-//        intent.putExtra("id", b.getID());
-//        intent.putExtra("title", b.getTitle());
-//        intent.putExtra("review", b.getReview());
+        intent.putExtra("id", b.getID() + " ");
+        intent.putExtra("title", b.getTitle());
+        intent.putExtra("review", b.getReview());
         startActivity(intent);
     }
 
