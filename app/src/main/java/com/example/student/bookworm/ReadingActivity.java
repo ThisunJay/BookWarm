@@ -25,6 +25,8 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
     RecyclerView rv;
     EditText txt_name;
     RAdapter adapter;
+    RBooks r;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +66,13 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
 
     @Override
     public void OnReadingClick(int position) {
-        arrayList.get(position);
+        r = arrayList.get(position);
         Intent intent = new Intent(this,InReadingAct.class);
+        intent.putExtra("name",r.getName());
+        intent.putExtra("author",r.getAuthor());
+        intent.putExtra("from",r.getFrom());
+        intent.putExtra("till",r.getTill());
+        intent.putExtra("genre",r.getGenre());
         startActivity(intent);
     }
 

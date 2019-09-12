@@ -314,7 +314,7 @@ public class DBHandler extends SQLiteOpenHelper {
     //-----------------Adi---------------------------------------------------------------------------------------------
     public ArrayList<RBooks> readAllRbooks() {
         SQLiteDatabase db = getReadableDatabase();
-        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME , BookWormMaster.ReadBook._ID };
+        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME , BookWormMaster.ReadBook._ID, BookWormMaster.ReadBook.COLUMN_RAUTHOR, BookWormMaster.ReadBook.COLUMN_RFROM, BookWormMaster.ReadBook.COLUMN_RTILL, BookWormMaster.ReadBook.COLUMN_RGENRE};
 
         String sortOrder = BookWormMaster.ReadBook.COLUMN_RNAME;
 
@@ -327,6 +327,10 @@ public class DBHandler extends SQLiteOpenHelper {
             String bookName = values.getString( values.getColumnIndexOrThrow( BookWormMaster.ReadBook.COLUMN_RNAME ));
             book.setName( bookName);
             book.setID( values.getInt( values.getColumnIndexOrThrow(BookWormMaster.ReadBook._ID) )  );
+            book.setAuthor(values.getString(values.getColumnIndexOrThrow(BookWormMaster.ReadBook.COLUMN_RAUTHOR)));
+            book.setFrom(values.getString(values.getColumnIndexOrThrow(BookWormMaster.ReadBook.COLUMN_RFROM)));
+            book.setTill(values.getString(values.getColumnIndexOrThrow(BookWormMaster.ReadBook.COLUMN_RTILL)));
+            book.setGenre(values.getString(values.getColumnIndexOrThrow(BookWormMaster.ReadBook.COLUMN_RGENRE)));
             books.add( book );
 
 

@@ -20,4 +20,9 @@ public class chechBook2 extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void open(View view){
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.com/Game-Thrones-Song-Fire-Book/dp/0553386794/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1568188672&sr=1-1"));
+        startActivity(intent);
+    }
+
 }
