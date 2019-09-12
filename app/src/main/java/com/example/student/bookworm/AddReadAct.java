@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -46,26 +47,45 @@ public class AddReadAct extends AppCompatActivity  {
     }
 
     public void addRBook(View view){
-        Name = txtname.getText().toString();
-        Author = txtauth.getText().toString();
-        RFrom = txtrfrom.getText().toString();
-        RTill = txtrtill.getText().toString();
-        Genre = txtgenre.getText().toString();
+       if(TextUtils.isEmpty(txtname.getText()) || TextUtils.isEmpty(txtauth.getText()) || TextUtils.isEmpty(txtrfrom.getText()) || TextUtils.isEmpty(txtrtill.getText()) || TextUtils.isEmpty(txtgenre.getText())){
+           txtname.setError("Enter an Value!");
+           txtauth.setError("Enter an value!");
+           txtrfrom.setError("Enter an value!");
+           txtrtill.setError("Enter an value!");
+           txtgenre.setError("Enter an value!");
 
-        boolean result = adb.addReadB(Name,Author,RFrom,RTill,Genre);
-        txtname.getText().clear();
-        txtauth.getText().clear();
-        txtrfrom.getText().clear();
-        txtrtill.getText().clear();
-        txtgenre.getText().clear();
-
-        if(result == true){
-            Toast.makeText(getApplicationContext(),"Success!",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, ReadingActivity.class);
-            startActivity(intent);
+           txtname.requestFocus();
+           txtauth.requestFocus();
+           txtrfrom.requestFocus();
+           txtrtill.requestFocus();
+           txtgenre.requestFocus();
         }else{
-            Toast.makeText(getApplicationContext(),"Failed!",Toast.LENGTH_LONG).show();
+           Name = txtname.getText().toString();
+           Author = txtauth.getText().toString();
+           RFrom = txtrfrom.getText().toString();
+           RTill = txtrtill.getText().toString();
+           Genre = txtgenre.getText().toString();
+
+           boolean result = adb.addReadB(Name,Author,RFrom,RTill,Genre);
+
+           txtname.getText().clear();
+           txtauth.getText().clear();
+           txtrfrom.getText().clear();
+           txtrtill.getText().clear();
+           txtgenre.getText().clear();
+
+           if(result == true){
+               Toast.makeText(getApplicationContext(),"Success!",Toast.LENGTH_LONG).show();
+               Intent intent = new Intent(this, ReadingActivity.class);
+               startActivity(intent);
+           }else{
+               Toast.makeText(getApplicationContext(),"Failed!",Toast.LENGTH_LONG).show();
+           }
         }
+
+
+
+
     }
 
     /*public void AddData(){
