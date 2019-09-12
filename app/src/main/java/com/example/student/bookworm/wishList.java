@@ -19,7 +19,7 @@ import Database.DBHandler;
 import Model.WishList;
 
 public class wishList extends AppCompatActivity implements WishAdapter.OnWishingListener{
-    private ArrayList<WishList> arrayList;
+    private ArrayList<WishList> WarrayList;
     DBHandler db;
     RecyclerView rv;
     WishAdapter adapter;
@@ -32,14 +32,16 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
 //
         db = new DBHandler(this);
 
-        arrayList = db.readAllWishList();
+        WarrayList = db.readAllWishList();
 
         rv = findViewById(R.id.recycle1);
         rv.setLayoutManager( new LinearLayoutManager(this));
 
-        ArrayList<WishList> arrayList =  db.readAllWishList();
-        Log.i("DB" , arrayList.size() + "Size ");
-        adapter  = new WishAdapter(arrayList);
+        ArrayList<WishList> WarrayList =  db.readAllWishList();
+        Log.i("DB" , WarrayList.size() + "Size ");
+        adapter  = new WishAdapter(WarrayList,this);
+        rv = findViewById(R.id.recycle1);
+        rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
 
         new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(rv);
@@ -57,7 +59,7 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
 
     @Override
     public void OnWishingClick(int position){
-        arrayList.get(position);
+        WarrayList.get(position);
         Intent intent = new Intent(this,viewWish.class);
         startActivity(intent);
     }
@@ -69,16 +71,25 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-            int deleteID = arrayList.get(viewHolder.getAdapterPosition()).getId();
+            int deleteID = WarrayList.get(viewHolder.getAdapterPosition()).getId();
             db.deleteWish(deleteID);
 
-            arrayList.remove(viewHolder.getAdapterPosition());
-            adapter.setArrayList(arrayList);
+            WarrayList.remove(viewHolder.getAdapterPosition());
+            adapter.setArrayList(WarrayList);
 
             Toast.makeText(getApplicationContext(),"Deleted",Toast.LENGTH_LONG).show();
 
          //  arrayList.remove(viewHolder.getAdapterPosition());
            //adapter.notifyDataSetChanged();
         }
+
+        //public void onClick(int position){
+           // WarrayList.get(position);
+           // Intent intent = new Intent(this, NewActivity.java);
+         //  startActivity(intent);
+       // }
     };
+
+    private class OnWishingListener {
+    }
 }
