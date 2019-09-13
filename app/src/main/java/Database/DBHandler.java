@@ -78,7 +78,7 @@ public class DBHandler extends SQLiteOpenHelper {
         //Log.i( "DB" , create_table_wishList );
 
     }
-
+//................................END OF CREATING TABLES..................................
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
        // db.execSQL("DROP TABLE IF EXiSTS " + BookWormMaster.ReadBook.TABLE_RBOOK);
@@ -151,7 +151,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.delete(BookWormMaster.ReadBook.TABLE_RBOOK , Selection ,SelectionArgs );
         Log.i( "DB", "Delete : " + id );
     }
-
+//...................Thisun's delete Book Method......................
     public void deleteBook(int id){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -162,6 +162,34 @@ public class DBHandler extends SQLiteOpenHelper {
         db.delete(BookWormMaster.Book.TABLE_NAME, Selection, SelectionArgs);
         Log.i("DB", "Delete : " + id);
     }
+//.......................End of Thisun's delete Book Method................................
+
+    public boolean bookUpdate(String title, String review){
+        SQLiteDatabase db = getReadableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        //contentValues.put(BookWormMaster.Book._ID, id);
+        contentValues.put(BookWormMaster.Book.COLUMN_NAME_REVIEW, review);
+
+        //String sql = "UPDATE SET " + BookWormMaster.Book.COLUMN_NAME_REVIEW + " = " + review;
+
+        String selection = BookWormMaster.Book.COLUMN_NAME_TITLE + " LIKE ?";
+
+        String[] SelectionArgs = { title };
+        Log.i("DB", selection);
+
+        //Cursor re = db.rawQuery(sql, SelectionArgs);
+        int result = db.update(BookWormMaster.Book.TABLE_NAME, contentValues, selection, SelectionArgs);
+
+        if(result > 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
 
     public boolean userUpdate(String username ){
         SQLiteDatabase db  = getReadableDatabase();

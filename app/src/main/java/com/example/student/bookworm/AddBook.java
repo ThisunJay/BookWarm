@@ -3,6 +3,8 @@ package com.example.student.bookworm;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,6 +27,9 @@ public class AddBook extends AppCompatActivity {
         txt_pages = findViewById(R.id.ttin4);
         txt_review = findViewById(R.id.ttin5);
 
+        txt_price.setInputType(InputType.TYPE_CLASS_NUMBER);
+        txt_pages.setInputType(InputType.TYPE_CLASS_NUMBER);
+
         db = new DBHandler(this);
     }
 
@@ -39,11 +44,19 @@ public class AddBook extends AppCompatActivity {
 
     public void addData(View view){
 
-        title = txt_title.getText().toString();
-        author = txt_author.getText().toString();
-        price = txt_price.getText().toString();
-        pages = txt_pages.getText().toString();
-        review = txt_review.getText().toString();
+        title = txt_title.getText().toString().trim();
+        author = txt_author.getText().toString().trim();
+        price = txt_price.getText().toString().trim();
+        pages = txt_pages.getText().toString().trim();
+        review = txt_review.getText().toString().trim();
+
+        if(TextUtils.isEmpty(title) || TextUtils.isEmpty(author) || TextUtils.isEmpty(price) || TextUtils.isEmpty(pages) || TextUtils.isEmpty(review)){
+            txt_title.setError("Field cannot be empty");
+            txt_author.setError("Field cannot be empty");
+            txt_price.setError("Field cannot be empty");
+            txt_pages.setError("Field cannot be empty");
+            txt_review.setError("Field cannot be empty");
+        }else{
 
         boolean result = db.addBook(title, author, price, pages, review);
 
@@ -55,6 +68,8 @@ public class AddBook extends AppCompatActivity {
         }else{
             Toast.makeText(getApplicationContext(), "Book adding faild", Toast.LENGTH_SHORT).show();
         }
+
+    }
 
     }
 }
