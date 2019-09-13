@@ -3,6 +3,7 @@ package com.example.student.bookworm;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,18 +27,24 @@ public class OsaAddCategory extends AppCompatActivity {
     }
 
     public void addCatBook(View view){
-        name = osuAddCat.getText().toString();
+        if(TextUtils.isEmpty(osuAddCat.getText()) ){
+            osuAddCat.setError("Enter an Value!");
+            osuAddCat.requestFocus();
 
-        boolean result = db.addCategoryOsu(name);
-        osuAddCat.getText().clear();
+        }else {
+            name = osuAddCat.getText().toString();
+
+            boolean result = db.addCategoryOsu(name);
+            osuAddCat.getText().clear();
 
 
-        if(result == true){
-            Toast.makeText(getApplicationContext(),"Success!",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, DashboardModernCategory.class);
-            startActivity(intent);
-        }else{
-            Toast.makeText(getApplicationContext(),"Failed!",Toast.LENGTH_LONG).show();
+            if (result == true) {
+                Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, DashboardModernCategory.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getApplicationContext(), "Failed!", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
