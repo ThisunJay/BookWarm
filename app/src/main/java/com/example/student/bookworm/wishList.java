@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
     DBHandler db;
     RecyclerView rv;
     WishAdapter adapter;
+    WishList W;
   //  EditText txt_name;
 
     @Override
@@ -45,7 +47,10 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
         rv.setAdapter(adapter);
 
         new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(rv);
+
     }
+
+
 
     public void addtowish(View view){
         Intent intent = new Intent(wishList.this, AddToWishlist.class);
@@ -59,10 +64,15 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
 
     @Override
     public void OnWishingClick(int position){
-        WarrayList.get(position);
+        W = WarrayList.get(position);
         Intent intent = new Intent(this,viewWish.class);
+        intent.putExtra("TITLE",W.getTitle());
+       // intent.putExtra("AUTHOR",W.getAuthor());
+        intent.putExtra("PRICE",W.getPrice());
         startActivity(intent);
     }
+
+
     ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
@@ -82,14 +92,12 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
          //  arrayList.remove(viewHolder.getAdapterPosition());
            //adapter.notifyDataSetChanged();
         }
+////////////////////////////////////////////////////////////////////////////
 
-        //public void onClick(int position){
-           // WarrayList.get(position);
-           // Intent intent = new Intent(this, NewActivity.java);
-         //  startActivity(intent);
-       // }
     };
 
     private class OnWishingListener {
     }
+
+
 }

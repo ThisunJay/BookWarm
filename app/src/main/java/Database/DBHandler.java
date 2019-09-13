@@ -366,7 +366,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public ArrayList<WishList> readAllWishList(){
         SQLiteDatabase db = getReadableDatabase();
 
-        String[] projection = {BookWormMaster.AddWishList.COLUMN_Title, BookWormMaster.AddWishList._ID};
+        String[] projection = {BookWormMaster.AddWishList.COLUMN_Title, BookWormMaster.AddWishList._ID, BookWormMaster.AddWishList.COLUMN_Price};
 
         String sortOrder = BookWormMaster.AddWishList.COLUMN_Title;
 
@@ -379,6 +379,8 @@ public class DBHandler extends SQLiteOpenHelper {
             String title = values.getString( values.getColumnIndexOrThrow( BookWormMaster.AddWishList.COLUMN_Title));
             wish.setTitle(title);
             wish.setId( values.getInt( values.getColumnIndexOrThrow(BookWormMaster.AddWishList._ID) )  );
+            wish.setPrice(values.getDouble(values.getColumnIndexOrThrow(BookWormMaster.AddWishList.COLUMN_Price)));
+            //Log.i("", );
             wishLists.add(wish);
         }
         return wishLists;
