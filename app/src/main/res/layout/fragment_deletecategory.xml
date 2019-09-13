@@ -23,37 +23,33 @@
                 android:id="@+id/txtdashbord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="15dp"
                 android:layout_alignParentLeft="true"
-                android:text="Delete Category"
-                android:layout_marginLeft="50dp"
-                android:textColor="#52BAFF"
+                android:text="Privacy and Policies"
+                android:layout_marginLeft="20dp"
+                android:textColor="#0000FF"
                 android:textSize="24sp" />
-
-
-
-
-
-            <EditText
-                android:id="@+id/osuAddCat"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtdashbord2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginRight="50dp"
-                android:ems="10"
-                android:hint="Enter Category Name"
-                android:inputType="textPersonName" />
+                android:layout_marginTop="55dp"
+                android:layout_alignParentLeft="true"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                android:layout_marginLeft="35dp"
+                android:textColor="#0000FF"
+                android:textSize="18sp" />
 
-            <Button
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginRight="50dp"
-                android:id="@+id/buttonaddfrag"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtdashbord3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DELETE" />
+                android:layout_marginTop="230dp"
+                android:layout_alignParentLeft="true"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                android:layout_marginLeft="35dp"
+                android:textColor="#0000FF"
+                android:textSize="18sp" />
 
         </RelativeLayout>
 

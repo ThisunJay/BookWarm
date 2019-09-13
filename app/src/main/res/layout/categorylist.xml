@@ -46,7 +46,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/deletebut" />
+                    android:src="@drawable/done" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
