@@ -19,12 +19,14 @@
             app:cardCornerRadius="12dp"
             android:layout_margin="15dp"
             >
+
             <LinearLayout
-                android:orientation="horizontal"
-                android:padding="16dp"
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="goToBooks"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <ImageView
                     android:layout_width="80dp"

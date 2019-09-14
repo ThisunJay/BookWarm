@@ -40,6 +40,10 @@ public class DashboardModernCategory extends AppCompatActivity {
         Intent myItent = new Intent(this,OsaAddCategory.class);
         startActivity(myItent);
     }
+    public void goToBooks(View v){
+        Intent myItent = new Intent(this,BooksMain.class);
+        startActivity(myItent);
+    }
     public void goBack(View v){
         Intent myItent = new Intent(this,MainActivity.class);
         startActivity(myItent);
