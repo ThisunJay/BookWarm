@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -23,7 +25,7 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
     private ArrayList<RBooks> arrayList;
     DBHandler db;
     RecyclerView rv;
-    EditText txt_name;
+    EditText txt_name,txt_serch;
     RAdapter adapter;
     RBooks r;
     String ID;
@@ -32,6 +34,24 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading);
+
+        txt_serch = findViewById(R.id.search);
+        txt_serch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
 
         db = new DBHandler(this);
 
@@ -43,6 +63,18 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
         rv.setAdapter(adapter);
 
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(rv);
+    }
+
+    public void filter(String text) {
+        ArrayList<RBooks> filteredList = new ArrayList<>();
+
+        for(RBooks item : arrayList){
+            if(item.getName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+
+        adapter.filterList(filteredList);
     }
 
     public void onAdd(View view){

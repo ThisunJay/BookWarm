@@ -68,5 +68,10 @@ public class RAdapter  extends RecyclerView.Adapter<RAdapter.RAdapterViewHolder>
         void OnReadingClick(int position);
     }
 
+    public void filterList(ArrayList<RBooks> filteredList){
+        arrayList = filteredList;
+        notifyDataSetChanged();
+    }
+
 
 }
