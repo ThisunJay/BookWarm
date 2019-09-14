@@ -164,31 +164,54 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 //.......................End of Thisun's delete Book Method................................
 
-    public boolean bookUpdate(String title, String review){
+    public boolean BUpdate(String id , String review){
+        Log.i( "Book Review: " , review);
+
         SQLiteDatabase db = getReadableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        //contentValues.put(BookWormMaster.Book._ID, id);
         contentValues.put(BookWormMaster.Book.COLUMN_NAME_REVIEW, review);
 
-        //String sql = "UPDATE SET " + BookWormMaster.Book.COLUMN_NAME_REVIEW + " = " + review;
+        String selection = BookWormMaster.Book._ID + " = ?";
 
-        String selection = BookWormMaster.Book.COLUMN_NAME_TITLE + " LIKE ?";
+        String[] SelectionArgs = { id };
+        Log.i( "Book ID: " , id);
 
-        String[] SelectionArgs = { title };
-        Log.i("DB", selection);
-
-        //Cursor re = db.rawQuery(sql, SelectionArgs);
         int result = db.update(BookWormMaster.Book.TABLE_NAME, contentValues, selection, SelectionArgs);
 
-        if(result > 1){
+        if(result > 0){
             return true;
-        }
-        else{
+        }else{
             return false;
         }
 
     }
+//    public boolean bookUpdate(String id, String review){
+////        SQLiteDatabase db = getReadableDatabase();
+////
+////        ContentValues contentValues = new ContentValues();
+////        contentValues.put(BookWormMaster.Book._ID, id);
+////        contentValues.put(BookWormMaster.Book.COLUMN_NAME_REVIEW, review);
+////
+////        String sql = "UPDATE SET " + BookWormMaster.Book.COLUMN_NAME_REVIEW + " = " + review;
+//
+//        String selection = BookWormMaster.Book._ID + " = ?";
+//
+//        String[] SelectionArgs = { id };
+//        Log.i("DB", "ID : "+id);
+//
+//        //Cursor re = db.rawQuery(sql, SelectionArgs);
+//        //int result = db.update(BookWormMaster.Book.TABLE_NAME, contentValues, selection, SelectionArgs);
+//
+////        if(result > 1){
+////            return true;
+////        }
+////        else{
+////            return false;
+////        }
+//        return false;
+//
+//    }
 
 
     public boolean userUpdate(String username ){
