@@ -26,6 +26,7 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
     EditText txt_name;
     RAdapter adapter;
     RBooks r;
+    String ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,9 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
     public void OnReadingClick(int position) {
         r = arrayList.get(position);
         Intent intent = new Intent(this,InReadingAct.class);
+        intent.putExtra("ID", r.getID()+"");
+        ID = String.valueOf(r.getID());
+        Log.i("ID in Reading Act: ", ID);
         intent.putExtra("name",r.getName());
         intent.putExtra("author",r.getAuthor());
         intent.putExtra("from",r.getFrom());

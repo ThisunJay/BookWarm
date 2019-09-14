@@ -151,6 +151,34 @@ public class DBHandler extends SQLiteOpenHelper {
         db.delete(BookWormMaster.ReadBook.TABLE_RBOOK , Selection ,SelectionArgs );
         Log.i( "DB", "Delete : " + id );
     }
+
+    public boolean editRead(String id, String name, String author ,String from, String till, String genre){
+
+        Log.i("ID: ", id);
+        Log.i("ID: ", name);
+        Log.i("ID: ", author);
+        SQLiteDatabase db = getReadableDatabase();
+//
+        ContentValues contentValues = new ContentValues();
+//
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RNAME,name);
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RAUTHOR,author);
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RFROM,from);
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RTILL,till);
+        contentValues.put(BookWormMaster.ReadBook.COLUMN_RGENRE,genre);
+//
+        String Selection = BookWormMaster.ReadBook._ID + " = ? ";
+        String SelectionArgs[] = { id };
+//
+        int re = db.update(BookWormMaster.ReadBook.TABLE_RBOOK , contentValues ,Selection ,SelectionArgs);
+//
+        if(re > 0){
+            return true;
+        }else {
+            return false;
+        }
+        //return true;
+    }
 //...................Thisun's delete Book Method......................
     public void deleteBook(int id){
 
@@ -186,32 +214,6 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
     }
-//    public boolean bookUpdate(String id, String review){
-////        SQLiteDatabase db = getReadableDatabase();
-////
-////        ContentValues contentValues = new ContentValues();
-////        contentValues.put(BookWormMaster.Book._ID, id);
-////        contentValues.put(BookWormMaster.Book.COLUMN_NAME_REVIEW, review);
-////
-////        String sql = "UPDATE SET " + BookWormMaster.Book.COLUMN_NAME_REVIEW + " = " + review;
-//
-//        String selection = BookWormMaster.Book._ID + " = ?";
-//
-//        String[] SelectionArgs = { id };
-//        Log.i("DB", "ID : "+id);
-//
-//        //Cursor re = db.rawQuery(sql, SelectionArgs);
-//        //int result = db.update(BookWormMaster.Book.TABLE_NAME, contentValues, selection, SelectionArgs);
-//
-////        if(result > 1){
-////            return true;
-////        }
-////        else{
-////            return false;
-////        }
-//        return false;
-//
-//    }
 
 
     public boolean userUpdate(String username ){
