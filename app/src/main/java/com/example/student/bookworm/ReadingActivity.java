@@ -1,8 +1,10 @@
 package com.example.student.bookworm;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -119,13 +121,26 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
         }
 
         @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+        public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int i) {
 
-             int deleteid = arrayList.get(viewHolder.getAdapterPosition()).getID();
-             db.deleteRead(deleteid);
-             Toast.makeText(getApplicationContext(),"Deleted!",Toast.LENGTH_LONG).show();
-
-
+            new AlertDialog.Builder(viewHolder.itemView.getContext())
+                    .setMessage("Confirm Delete?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            int deleteid = arrayList.get(viewHolder.getAdapterPosition()).getID();
+                            db.deleteRead(deleteid);
+                            Toast.makeText(getApplicationContext(),"Deleted!",Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            adapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                        }
+                    })
+                    .create()
+                    .show();
 //            arrayList.remove(viewHolder.getAdapterPosition());
 //            adapter.notifyDataSetChanged();
         }
