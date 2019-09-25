@@ -30,12 +30,11 @@
                 android:textSize="24sp" />
             <TextView
                 android:layout_below="@+id/txtdashbord"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="You can Modify Categories here"
+                android:text="To update/delete, you must enter your relavent category name first"
                 android:textColor="#52BAFF"
                 android:textSize="14sp" />
 
@@ -53,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="130dp"
                 android:layout_marginRight="50dp"
                 android:ems="10"
                 android:hint="Enter Category Name"
@@ -64,6 +63,7 @@
 
         <GridLayout
 
+            android:layout_marginTop="40dp"
             android:columnCount="2"
             android:rowCount="3"
             android:alignmentMode="alignMargins"

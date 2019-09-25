@@ -48,18 +48,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         public CategoryAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_nameOSA);
-            //this.OsaOnReadingListner = OsaOnReadingListner;
 
-            //itemView.setOnClickListener(this);
         }
 
-//        @Override
-//        //public void onClick(View view) {
-//            OsaOnReadingListner.OnReadingClick(getAdapterPosition());
-//        }
     }
 
-//    public interface OnReadingListener {
-//        void OnReadingClick(int position);
-//    }
+    public void filterList(ArrayList<Category> filteredList){
+        arrayList = filteredList;
+        notifyDataSetChanged();
+    }
+
 }

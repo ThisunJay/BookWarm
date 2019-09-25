@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -17,6 +20,7 @@ public class DashboardModernCategory extends AppCompatActivity {
 
     private ArrayList<Category> arrayList;
     DBHandler db;
+    EditText txt_serch;
     RecyclerView rvosa;
     CategoryAdapter adapter;
 
@@ -34,8 +38,37 @@ public class DashboardModernCategory extends AppCompatActivity {
         adapter = new CategoryAdapter(arrayList);
         rvosa.setLayoutManager(new LinearLayoutManager(this));
         rvosa.setAdapter(adapter);
+
+        txt_serch = findViewById(R.id.searchosa);
+        txt_serch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
     }
 
+        public void filter(String text) {
+            ArrayList<Category> filteredList = new ArrayList<>();
+
+            for(Category item : arrayList){
+                if(item.getUname().toLowerCase().contains(text.toLowerCase())){
+                    filteredList.add(item);
+                }
+            }
+
+            adapter.filterList(filteredList);
+        }
     public void goToAdd(View v){
         Intent myItent = new Intent(this,OsaAddCategory.class);
         startActivity(myItent);

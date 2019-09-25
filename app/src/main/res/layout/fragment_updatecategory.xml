@@ -45,7 +45,47 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="150dp"
                 android:layout_alignParentLeft="true"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                android:text="Tel : 0987654321"
+                android:layout_marginLeft="35dp"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/txtdashbord4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:layout_alignParentLeft="true"
+                android:text="Fax : 0987654321"
+                android:layout_marginLeft="35dp"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/txtdashbord5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="210dp"
+                android:layout_alignParentLeft="true"
+                android:text="Email : bookwormapp@gmail.com"
+                android:layout_marginLeft="35dp"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/txtdashbord6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="240dp"
+                android:layout_alignParentLeft="true"
+                android:text="Web : bookwormMaster.com"
+                android:layout_marginLeft="35dp"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/txtdashbord7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="270dp"
+                android:layout_alignParentLeft="true"
+                android:text="Address : 116/6 , Isurupura ,MLB"
                 android:layout_marginLeft="35dp"
                 android:textColor="#000000"
                 android:textSize="18sp" />
