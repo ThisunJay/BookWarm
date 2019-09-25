@@ -73,6 +73,11 @@ public class EditRead extends AppCompatActivity {
         });
     }
 
+    public void editRead(View view){
+        Intent inten = new Intent(this,ReadingActivity.class);
+        startActivity(inten);
+    }
+
 //    public  void editRead(View view){
 //        name  = txtn.getText().toString().trim();
 //        author = txta.getText().toString().trim();
