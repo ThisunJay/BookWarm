@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -20,15 +23,18 @@ import java.util.TimeZone;
 
 import Adapters.RAdapter;
 import Database.DBHandler;
+import Model.Category;
 
-public class AddReadAct extends AppCompatActivity  {
+public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DBHandler adb;
     EditText txtname,txtauth,txtrfrom,txtrtill,txtgenre;
+    Spinner spin;
     private String Name;
     private String Author;
     private String RFrom;
     private String RTill;
     private String Genre;
+    private String label;
 
 
     @Override
@@ -40,10 +46,21 @@ public class AddReadAct extends AppCompatActivity  {
         txtauth = findViewById(R.id.ttin8);
         txtrfrom = findViewById(R.id.txtFrom2);
         txtrtill = findViewById(R.id.txtTill);
-        txtgenre = findViewById(R.id.AedG);
+        //txtgenre = findViewById(R.id.AedG);
+        spin = findViewById(R.id.spinner);
 
         adb = new DBHandler(this);
+        ArrayList<String> categoryNames = new ArrayList<>();
+        ArrayList<Category> categories = adb.readAllCategoriesOsa();
 
+        for(int x = 0 ;  x < categories.size() ; x++ )
+            categoryNames.add(categories.get(x).getUname());
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, categoryNames);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter);
+        spin.setOnItemSelectedListener(this);
     }
 
     public void addRBook(View view){
@@ -52,21 +69,21 @@ public class AddReadAct extends AppCompatActivity  {
            txtauth.setError("Enter an value!");
            txtrfrom.setError("Enter an value!");
            txtrtill.setError("Enter an value!");
-           txtgenre.setError("Enter an value!");
+//           txtgenre.setError("Enter an value!");
 
            txtname.requestFocus();
            txtauth.requestFocus();
            txtrfrom.requestFocus();
            txtrtill.requestFocus();
-           txtgenre.requestFocus();
+//           txtgenre.requestFocus();
         }else{
            Name = txtname.getText().toString();
            Author = txtauth.getText().toString();
            RFrom = txtrfrom.getText().toString();
            RTill = txtrtill.getText().toString();
-           Genre = txtgenre.getText().toString();
+//           Genre = txtgenre.getText().toString();
 
-           boolean result = adb.addReadB(Name,Author,RFrom,RTill,Genre);
+           boolean result = adb.addReadB(Name,Author,RFrom,RTill,label);
 
            txtname.getText().clear();
            txtauth.getText().clear();
@@ -150,4 +167,16 @@ public class AddReadAct extends AppCompatActivity  {
         startActivity(intent1);
     }
 
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//        String text = adapterView.getItemAtPosition(i).toString();
+//        Toast.makeText(adapterView.getContext(),text,Toast.LENGTH_LONG).show();
+        label = adapterView.getItemAtPosition(i).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }
