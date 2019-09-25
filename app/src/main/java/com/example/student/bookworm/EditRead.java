@@ -5,19 +5,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import Database.DBHandler;
+import Model.Category;
 
 public class EditRead extends AppCompatActivity {
 
     DBHandler db;
-    EditText txtn,txta,txtf,txtt,txtg;
+    EditText txtn,txta,txtf,txtt;
+    Spinner txtg;
     String name,author,from,till,genre;
     String ID;
     Button updateBtn;
+    ArrayList<String> categoryNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +37,24 @@ public class EditRead extends AppCompatActivity {
         txta = findViewById(R.id.eta);
         txtf = findViewById(R.id.etf);
         txtt = findViewById(R.id.ett);
-        txtg = findViewById(R.id.etg);
+        txtg = findViewById(R.id.spinner2);
+
+        db = new DBHandler(this);
+        categoryNames = new ArrayList<>();
+        ArrayList<Category> categories = db.readAllCategoriesOsa();
+
+        String defaultCat[] = getResources().getStringArray(R.array.cat_cat);
+        for (int i = 0; i < defaultCat.length; i++) {
+            categoryNames.add(defaultCat[i]);
+        }
+
+        for(int x = 0 ;  x < categories.size() ; x++ )
+            categoryNames.add(categories.get(x).getUname());
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, categoryNames);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        txtg.setAdapter(adapter);
 
         Intent intent = getIntent();
 
@@ -40,13 +64,13 @@ public class EditRead extends AppCompatActivity {
         author = intent.getStringExtra("author");
         from = intent.getStringExtra("from");
         till = intent.getStringExtra("till");
-        genre = intent.getStringExtra("genre");
+        //genre = intent.getStringExtra("genre");
 
         txtn.setText(name);
         txta.setText(author);
         txtf.setText(from);
         txtt.setText(till);
-        txtg.setText(genre);
+        //txtg.setText(genre);
 
         updateBtn = findViewById(R.id.Abtn4);
 
@@ -57,7 +81,8 @@ public class EditRead extends AppCompatActivity {
                 author = txta.getText().toString().trim();
                 from = txtf.getText().toString().trim();
                 till = txtt.getText().toString().trim();
-                genre = txtg.getText().toString().trim();
+                genre = adapter.getItem(txtg.getSelectedItemPosition());
+                //genre = txtg.getText().toString().trim();
 
                 boolean ret = db.editRead(ID, name, author, from, till, genre);
 
@@ -71,6 +96,9 @@ public class EditRead extends AppCompatActivity {
                 }
             }
         });
+
+        int id = SetSpinnerSelection(getResources().getStringArray(R.array.cat_cat),genre);
+        txtg.setSelection(id);
     }
 
     public void editRead(View view){
@@ -103,4 +131,13 @@ public class EditRead extends AppCompatActivity {
 //        }
 
    // }
+
+    public int SetSpinnerSelection(String[] array,String text){
+        for(int i = 0;i < array.length;i++){
+            if(array[i].equals(text)){
+                return i;
+            }
+        }
+        return 0;
+    }
 }
