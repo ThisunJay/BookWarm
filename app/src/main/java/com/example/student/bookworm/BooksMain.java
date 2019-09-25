@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,13 +28,33 @@ public class BooksMain extends AppCompatActivity implements BookAdapter.onBookLi
     RecyclerView rv;
     BookAdapter adapter;
     BookInfo b;
+    EditText search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books_main);
 
-       db = new DBHandler(this);
+        db = new DBHandler(this);
+
+        search = findViewById(R.id.searchBook);
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
 
         arrayList = db.readAllBookinfo();
         Log.i("DB", arrayList.size() + "Size ");
@@ -41,6 +64,18 @@ public class BooksMain extends AppCompatActivity implements BookAdapter.onBookLi
         rv.setAdapter(adapter);
 
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(rv);
+    }
+
+    public void filter(String s){
+        ArrayList<BookInfo> filteredList = new ArrayList<>();
+
+        for(BookInfo item : arrayList){
+            if(item.getTitle().toLowerCase().contains(s.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+
+        adapter.filterList(filteredList);
     }
 
     public void addBook(View view){

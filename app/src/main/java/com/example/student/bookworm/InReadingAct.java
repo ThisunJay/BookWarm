@@ -74,6 +74,14 @@ public class InReadingAct extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onAddToLibrary(View view){
+        Intent intent = new Intent(this, AddBook.class);
+        intent.putExtra("title", name);
+        intent.putExtra("author", author);
+        intent.putExtra("genre", genre);
+        startActivity(intent);
+    }
+
     public void countDownStart(){
         handler = new Handler();
         runnable = new Runnable() {

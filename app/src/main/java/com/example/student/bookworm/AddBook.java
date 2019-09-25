@@ -27,6 +27,13 @@ public class AddBook extends AppCompatActivity {
         txt_pages = findViewById(R.id.ttin4);
         txt_review = findViewById(R.id.ttin5);
 
+        Intent intent = getIntent();
+
+        if(intent.hasExtra("title") || intent.hasExtra("author")){
+            txt_title.setText(intent.getStringExtra("title"));
+            txt_author.setText(intent.getStringExtra("author"));
+        }
+
         txt_price.setInputType(InputType.TYPE_CLASS_NUMBER);
         txt_pages.setInputType(InputType.TYPE_CLASS_NUMBER);
 

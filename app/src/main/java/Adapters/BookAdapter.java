@@ -72,4 +72,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookAdapterVie
        void OnBookClick(int position);
     }
 
+    public void filterList(ArrayList<BookInfo> filteredList){
+        arrayList = filteredList;
+        notifyDataSetChanged();
+    }
+
 }
