@@ -33,7 +33,7 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
     private String Author;
     private String RFrom;
     private String RTill;
-    private String Genre;
+    ArrayList<String> categoryNames;
     private String label;
 
 
@@ -50,8 +50,13 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
         spin = findViewById(R.id.spinner);
 
         adb = new DBHandler(this);
-        ArrayList<String> categoryNames = new ArrayList<>();
+        categoryNames = new ArrayList<>();
         ArrayList<Category> categories = adb.readAllCategoriesOsa();
+
+        String defaultCat[] = getResources().getStringArray(R.array.cat_cat);
+        for (int i = 0; i < defaultCat.length; i++) {
+            categoryNames.add(defaultCat[i]);
+        }
 
         for(int x = 0 ;  x < categories.size() ; x++ )
             categoryNames.add(categories.get(x).getUname());
@@ -64,7 +69,7 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
     }
 
     public void addRBook(View view){
-       if(TextUtils.isEmpty(txtname.getText()) || TextUtils.isEmpty(txtauth.getText()) || TextUtils.isEmpty(txtrfrom.getText()) || TextUtils.isEmpty(txtrtill.getText()) || TextUtils.isEmpty(txtgenre.getText())){
+       if(TextUtils.isEmpty(txtname.getText()) || TextUtils.isEmpty(txtauth.getText()) || TextUtils.isEmpty(txtrfrom.getText()) || TextUtils.isEmpty(txtrtill.getText()) ){
            txtname.setError("Enter an Value!");
            txtauth.setError("Enter an value!");
            txtrfrom.setError("Enter an value!");
@@ -89,7 +94,7 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
            txtauth.getText().clear();
            txtrfrom.getText().clear();
            txtrtill.getText().clear();
-           txtgenre.getText().clear();
+           //txtgenre.getText().clear();
 
            if(result == true){
                Toast.makeText(getApplicationContext(),"Success!",Toast.LENGTH_LONG).show();
@@ -172,7 +177,7 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 //        String text = adapterView.getItemAtPosition(i).toString();
 //        Toast.makeText(adapterView.getContext(),text,Toast.LENGTH_LONG).show();
-        label = adapterView.getItemAtPosition(i).toString();
+        label = categoryNames.get(i);
     }
 
     @Override

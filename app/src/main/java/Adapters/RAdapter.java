@@ -37,7 +37,7 @@ public class RAdapter  extends RecyclerView.Adapter<RAdapter.RAdapterViewHolder>
     public void onBindViewHolder(@NonNull RAdapterViewHolder Holder, int i) {
                 RBooks object = arrayList.get(i);
                 Holder.name.setText(object.getName() );
-
+                //Holder.type.setText(object.getGenre());
     }
 
     @Override
@@ -48,12 +48,13 @@ public class RAdapter  extends RecyclerView.Adapter<RAdapter.RAdapterViewHolder>
     public class RAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
+        TextView type;
         OnReadingListener onReadingListener;
         public RAdapterViewHolder(@NonNull View itemView, OnReadingListener onReadingListener) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
+            //type = itemView.findViewById(R.id.spinner);
             this.onReadingListener = onReadingListener;
-
             itemView.setOnClickListener(this);
         }
 

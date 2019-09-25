@@ -117,4 +117,15 @@
     <string name="Counter">Days Left :</string>
     <string name="countertv" />
 
+    <string-array name="cat_cat">
+        <item>Maths</item>
+        <item>Comic</item>
+        <item>Cooking</item>
+        <item>Children</item>
+        <item>Law</item>
+        <item>Novel</item>
+        <item>Travel</item>
+        <item>Philosophy</item>
+    </string-array>>
+
 </resources>
