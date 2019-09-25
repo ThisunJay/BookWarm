@@ -156,10 +156,12 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
-                            android:src="@drawable/cog"
                             android:layout_width="100dp"
-                            android:layout_height="130dp" />
+                            android:layout_height="130dp"
+                            android:onClick="open2"
+                            android:src="@drawable/cog" />
                         <TextView
                             android:layout_marginTop="12dp"
                             android:textColor="#6f6f6f"
@@ -184,10 +186,12 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
-                            android:src="@drawable/sp"
                             android:layout_width="100dp"
-                            android:layout_height="130dp" />
+                            android:layout_height="130dp"
+                            android:onClick="open3"
+                            android:src="@drawable/sp" />
                         <TextView
                             android:layout_marginTop="12dp"
                             android:textColor="#6f6f6f"
@@ -218,10 +222,12 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
-                            android:src="@drawable/mrs"
                             android:layout_width="100dp"
-                            android:layout_height="130dp" />
+                            android:layout_height="130dp"
+                            android:onClick="open4"
+                            android:src="@drawable/mrs" />
                         <TextView
                             android:layout_marginTop="12dp"
                             android:textColor="#6f6f6f"
@@ -248,9 +254,10 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:src="@drawable/night"
                             android:layout_width="100dp"
-                            android:layout_height="130dp" />
+                            android:layout_height="130dp"
+                            android:onClick="open5"
+                            android:src="@drawable/night" />
                         <TextView
                             android:layout_marginTop="12dp"
                             android:textColor="#6f6f6f"
@@ -281,10 +288,12 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
-                            android:src="@drawable/oncewe"
                             android:layout_width="100dp"
-                            android:layout_height="130dp" />
+                            android:layout_height="130dp"
+                            android:onClick="open6"
+                            android:src="@drawable/oncewe" />
                         <TextView
                             android:layout_marginTop="12dp"
                             android:textColor="#6f6f6f"
@@ -309,10 +318,12 @@
                         android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageView
-                            android:src="@drawable/daisy"
                             android:layout_width="100dp"
-                            android:layout_height="130dp" />
+                            android:layout_height="130dp"
+                            android:onClick="open7"
+                            android:src="@drawable/daisy" />
                         <TextView
                             android:layout_marginTop="12dp"
                             android:textColor="#6f6f6f"
