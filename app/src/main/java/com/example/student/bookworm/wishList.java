@@ -66,10 +66,13 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
     public void OnWishingClick(int position){
         W = WarrayList.get(position);
         Intent intent = new Intent(this,viewWish.class);
-        intent.putExtra("TITLE",W.getTitle());
+        //intent.putExtra("TITLE",W.getTitle());
        // intent.putExtra("AUTHOR",W.getAuthor());
-        intent.putExtra("PRICE",W.getPrice());
+        Toast.makeText(this, W.getPrice()+"" , Toast.LENGTH_SHORT ).show();
+        intent.putExtra("Wishlist",W );
         startActivity(intent);
+
+
     }
 
 

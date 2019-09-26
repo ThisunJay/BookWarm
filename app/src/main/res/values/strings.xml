@@ -97,6 +97,7 @@
     <string name="ttv42">Nayana Mal Gasa</string>
     <string name="ttv43">Uyanna Igenaganna</string>
     <string name="Kedit">EDIT</string>
+    <string name="Kdone">DONE</string>
     <string name="DeletebtnOsa">Delete</string>
     <string name="updatebtnosa">Update</string>
     <string name="updateTextOsa">Update Category</string>
@@ -111,6 +112,14 @@
     <string name="osaBtnUpdate">Update</string>
     <string name="osabtnDelete" />
     <string name="osabtnDelete2">Delete</string>
+    <string name="Book_title">Text</string>
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="price">Price</string>
+    <string name="titlefeild">TITLE</string>
+    <string name="authorfeild">AUTHOR</string>
+    <string name="pricefeilld">Price</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

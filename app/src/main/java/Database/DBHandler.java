@@ -72,7 +72,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 BookWormMaster.AddWishList._ID + " INTEGER PRIMARY KEY, " +
                 BookWormMaster.AddWishList.COLUMN_Title + " TEXT, " +
                 BookWormMaster.AddWishList.COLUMN_Author + " TEXT, " +
-                BookWormMaster.AddWishList.COLUMN_Price + " TEXT );";
+                BookWormMaster.AddWishList.COLUMN_Price + " DOUBLE  );";
 
         db.execSQL(create_table_wishList);
         //Log.i( "DB" , create_table_wishList );
@@ -248,10 +248,29 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
+//==================================Kavi Update=======================================
 
+    public boolean WishUpdate(String title,String author,double price){
+        SQLiteDatabase db = getReadableDatabase();
 
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(BookWormMaster.AddWishList.COLUMN_Title , title);
+        contentValues.put(BookWormMaster.AddWishList.COLUMN_Author , author);
+        contentValues.put(BookWormMaster.AddWishList.COLUMN_Price , price);
 
+        String Selection = BookWormMaster.AddWishList.COLUMN_Title + "  ? ";
+        Log.i("DB" , Selection );
+        String SelectionArgs[] = { title };
 
+        int wish = db.update(BookWormMaster.AddWishList.TABLE_WLIST , contentValues ,Selection , SelectionArgs);
+
+        if(wish > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 
 
@@ -344,6 +363,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public boolean AddWishList(String Title, String Author, double Price){
 
+
+        Log.i("DB",Price+"");
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -419,7 +440,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public ArrayList<WishList> readAllWishList(){
         SQLiteDatabase db = getReadableDatabase();
 
-        String[] projection = {BookWormMaster.AddWishList.COLUMN_Title, BookWormMaster.AddWishList._ID, BookWormMaster.AddWishList.COLUMN_Price};
+        String[] projection = {BookWormMaster.AddWishList.COLUMN_Title, BookWormMaster.AddWishList._ID, BookWormMaster.AddWishList.COLUMN_Price ,BookWormMaster.AddWishList.COLUMN_Author};
 
         String sortOrder = BookWormMaster.AddWishList.COLUMN_Title;
 
@@ -431,10 +452,11 @@ public class DBHandler extends SQLiteOpenHelper {
             WishList wish = new WishList();
             String title = values.getString( values.getColumnIndexOrThrow( BookWormMaster.AddWishList.COLUMN_Title));
             wish.setTitle(title);
+            wish.setAuthor( values.getString(values.getColumnIndexOrThrow(BookWormMaster.AddWishList.COLUMN_Author)));
             wish.setId( values.getInt( values.getColumnIndexOrThrow(BookWormMaster.AddWishList._ID) )  );
             wish.setPrice(values.getDouble(values.getColumnIndexOrThrow(BookWormMaster.AddWishList.COLUMN_Price)));
             //Log.i("", );
-            wishLists.add(wish);
+            wishLists.add( wish );
         }
         return wishLists;
     }

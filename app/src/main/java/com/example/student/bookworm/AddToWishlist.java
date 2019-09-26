@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -43,11 +44,13 @@ public class AddToWishlist extends AppCompatActivity {
             Title.requestFocus();
             Author.requestFocus();
             Price.requestFocus();
+//            Log.i("DB", Price.getText().toString() );
 
         } else {
             TITLE = Title.getText().toString();
             AUTHOR = Author.getText().toString();
-            Double.valueOf(PRICE);
+            PRICE = Double.valueOf(Price.getText().toString());
+
 
             boolean result = db.AddWishList(TITLE, AUTHOR, PRICE);
 

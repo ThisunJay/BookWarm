@@ -1,6 +1,8 @@
 package Model;
 
-public class WishList {
+import java.io.Serializable;
+
+public class WishList implements Serializable {
     private int Id;
     private String Title;
     private String Author;

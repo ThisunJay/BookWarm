@@ -18,8 +18,9 @@ import Model.Category;
 
 public class EditRead extends AppCompatActivity {
 
-    DBHandler db;
     EditText txtn,txta,txtf,txtt;
+    DBHandler db;
+    //EditText txtn,txta,txtf,txtt;
     Spinner txtg;
     String name,author,from,till,genre;
     String ID;
@@ -30,8 +31,6 @@ public class EditRead extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_read);
-
-        db = new DBHandler(this);
 
         txtn = findViewById(R.id.etn);
         txta = findViewById(R.id.eta);
@@ -58,8 +57,6 @@ public class EditRead extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        ID = intent.getStringExtra( "id" );
-        Log.i("Passed ID: ", ID);
         name = intent.getStringExtra("name");
         author = intent.getStringExtra("author");
         from = intent.getStringExtra("from");
@@ -83,6 +80,8 @@ public class EditRead extends AppCompatActivity {
                 till = txtt.getText().toString().trim();
                 genre = adapter.getItem(txtg.getSelectedItemPosition());
                 //genre = txtg.getText().toString().trim();
+
+
 
                 boolean ret = db.editRead(ID, name, author, from, till, genre);
 
