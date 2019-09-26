@@ -1,7 +1,9 @@
 package com.example.student.bookworm;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -117,13 +119,31 @@ public class BooksMain extends AppCompatActivity implements BookAdapter.onBookLi
         }
 
         @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+        public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int i) {
 
-            int id = arrayList.get(viewHolder.getAdapterPosition()).getID();
-            db.deleteBook(id);
-            arrayList.remove(viewHolder.getAdapterPosition());
-            adapter.notifyDataSetChanged();
-            Toast.makeText(getApplicationContext(),"Deleted" ,Toast.LENGTH_LONG).show();
+            new AlertDialog.Builder(viewHolder.itemView.getContext())
+                    .setMessage("Confirm Delete?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            int id = arrayList.get(viewHolder.getAdapterPosition()).getID();
+                            db.deleteBook(id);
+                            Toast.makeText(getApplicationContext(),"Deleted" ,Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            adapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                        }
+                    })
+                    .create()
+                    .show();
+
+
+//            arrayList.remove(viewHolder.getAdapterPosition());
+//            adapter.notifyDataSetChanged();
+
 
         }
     };
