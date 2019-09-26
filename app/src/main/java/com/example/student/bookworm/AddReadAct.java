@@ -49,6 +49,7 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
         //txtgenre = findViewById(R.id.AedG);
         spin = findViewById(R.id.spinner);
 
+        //Spinner populate
         adb = new DBHandler(this);
         categoryNames = new ArrayList<>();
         ArrayList<Category> categories = adb.readAllCategoriesOsa();
@@ -69,6 +70,7 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
     }
 
     public void addRBook(View view){
+        //validation
        if(TextUtils.isEmpty(txtname.getText()) || TextUtils.isEmpty(txtauth.getText()) || TextUtils.isEmpty(txtrfrom.getText()) || TextUtils.isEmpty(txtrtill.getText()) ){
            txtname.setError("Enter an Value!");
            txtauth.setError("Enter an value!");
@@ -82,12 +84,14 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
            txtrtill.requestFocus();
 //           txtgenre.requestFocus();
         }else{
+           //get function
            Name = txtname.getText().toString();
            Author = txtauth.getText().toString();
            RFrom = txtrfrom.getText().toString();
            RTill = txtrtill.getText().toString();
 //           Genre = txtgenre.getText().toString();
 
+           //setting result
            boolean result = adb.addReadB(Name,Author,RFrom,RTill,label);
 
            txtname.getText().clear();
@@ -132,6 +136,7 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
     }*/
 
 
+    //Date selecting
     public void updateDate(final View view){
 
 
@@ -173,6 +178,7 @@ public class AddReadAct extends AppCompatActivity implements AdapterView.OnItemS
     }
 
 
+    //spinner function selected
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 //        String text = adapterView.getItemAtPosition(i).toString();

@@ -82,6 +82,7 @@ public class InReadingAct extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //countDown days and hours
     public void countDownStart(){
         handler = new Handler();
         runnable = new Runnable() {

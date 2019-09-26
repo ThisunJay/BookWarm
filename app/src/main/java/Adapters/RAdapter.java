@@ -65,10 +65,12 @@ public class RAdapter  extends RecyclerView.Adapter<RAdapter.RAdapterViewHolder>
         }
     }
 
+    //touch listner
     public interface OnReadingListener{
         void OnReadingClick(int position);
     }
 
+    //search eka
     public void filterList(ArrayList<RBooks> filteredList){
         arrayList = filteredList;
         notifyDataSetChanged();

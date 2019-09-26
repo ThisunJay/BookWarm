@@ -68,6 +68,7 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(rv);
     }
 
+    //search
     public void filter(String text) {
         ArrayList<RBooks> filteredList = new ArrayList<>();
 
@@ -100,6 +101,7 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
         startActivity(intent1);
     }
 
+    //recycler view swiping
     @Override
     public void OnReadingClick(int position) {
         r = arrayList.get(position);
