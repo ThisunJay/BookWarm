@@ -57,6 +57,7 @@ public class EditRead extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        ID = intent.getStringExtra("id");
         name = intent.getStringExtra("name");
         author = intent.getStringExtra("author");
         from = intent.getStringExtra("from");

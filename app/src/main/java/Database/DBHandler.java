@@ -154,9 +154,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public boolean editRead(String id, String name, String author ,String from, String till, String genre){
 
-        Log.i("ID: ", id);
-        Log.i("ID: ", name);
-        Log.i("ID: ", author);
+
         SQLiteDatabase db = getReadableDatabase();
 //
         ContentValues contentValues = new ContentValues();
@@ -388,11 +386,14 @@ public class DBHandler extends SQLiteOpenHelper {
     //-----------------Adi---------------------------------------------------------------------------------------------
     public ArrayList<RBooks> readAllRbooks() {
         SQLiteDatabase db = getReadableDatabase();
-        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME , BookWormMaster.ReadBook._ID, BookWormMaster.ReadBook.COLUMN_RAUTHOR, BookWormMaster.ReadBook.COLUMN_RFROM, BookWormMaster.ReadBook.COLUMN_RTILL, BookWormMaster.ReadBook.COLUMN_RGENRE};
+        String[] projection = {BookWormMaster.ReadBook.COLUMN_RNAME , BookWormMaster.ReadBook._ID,
+                BookWormMaster.ReadBook.COLUMN_RAUTHOR, BookWormMaster.ReadBook.COLUMN_RFROM,
+                BookWormMaster.ReadBook.COLUMN_RTILL, BookWormMaster.ReadBook.COLUMN_RGENRE};
 
         String sortOrder = BookWormMaster.ReadBook.COLUMN_RNAME;
 
-        Cursor values = db.query(BookWormMaster.ReadBook.TABLE_RBOOK ,projection,null,null,null,null,sortOrder);
+        Cursor values = db.query(BookWormMaster.ReadBook.TABLE_RBOOK ,projection,null,
+                null,null,null,sortOrder);
 
         ArrayList<RBooks> books = new ArrayList<RBooks>();
 
@@ -414,11 +415,13 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public ArrayList<BookInfo> readAllBookinfo(){
         SQLiteDatabase db = getReadableDatabase();
-        String[] projection = {BookWormMaster.Book.COLUMN_NAME_TITLE , BookWormMaster.Book._ID, BookWormMaster.Book.COLUMN_NAME_REVIEW };
+        String[] projection = {BookWormMaster.Book.COLUMN_NAME_TITLE , BookWormMaster.Book._ID,
+                BookWormMaster.Book.COLUMN_NAME_REVIEW };
 
         String sortOrder = BookWormMaster.Book.COLUMN_NAME_TITLE;
 
-        Cursor values = db.query(BookWormMaster.Book.TABLE_NAME, projection, null, null, null, null, sortOrder);
+        Cursor values = db.query(BookWormMaster.Book.TABLE_NAME, projection, null, null,
+                null, null, sortOrder);
 
         ArrayList<BookInfo> books = new ArrayList<BookInfo>();
 
