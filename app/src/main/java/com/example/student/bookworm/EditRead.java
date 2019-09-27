@@ -3,6 +3,7 @@ package com.example.student.bookworm;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -83,16 +84,24 @@ public class EditRead extends AppCompatActivity {
                 //genre = txtg.getText().toString().trim();
 
 
+                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(author) || TextUtils.isEmpty(from) || TextUtils.isEmpty(till)){
+                    txtn.setError("Field cannot be empty");
+                    txta.setError("Field cannot be empty");
+                    txtf.setError("Field cannot be empty");
+                    txtt.setError("Field cannot be empty");
+                    //txt.setError("Field cannot be empty");
+                }else {
 
-                boolean ret = db.editRead(ID, name, author, from, till, genre);
 
-                if(ret == true){
-                    Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_LONG).show();
-                    Intent in = new Intent(EditRead.this, ReadingActivity.class);
-                    startActivity(in);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Update Failed", Toast.LENGTH_LONG).show();
+                    boolean ret = db.editRead(ID, name, author, from, till, genre);
+
+                    if (ret == true) {
+                        Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_LONG).show();
+                        Intent in = new Intent(EditRead.this, ReadingActivity.class);
+                        startActivity(in);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Update Failed", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
