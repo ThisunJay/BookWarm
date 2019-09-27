@@ -3,6 +3,7 @@ package com.example.student.bookworm;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,15 +43,21 @@ public class updateReview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 review = edit_review.getText().toString().trim();
-                Boolean re = db.BUpdate( id , review);
 
-                if(re == true){
-                    Toast.makeText(getApplicationContext(), "Review Updated", Toast.LENGTH_LONG).show();
-                    Intent in = new Intent(updateReview.this, BooksMain.class);
-                    startActivity(in);
+                if(TextUtils.isEmpty(review)){
+                    edit_review.setError("Review can not be empty");
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "Review Not Updated", Toast.LENGTH_LONG).show();
+                    Boolean re = db.BUpdate( id , review);
+
+                    if(re == true){
+                        Toast.makeText(getApplicationContext(), "Review Updated", Toast.LENGTH_LONG).show();
+                        Intent in = new Intent(updateReview.this, BooksMain.class);
+                        startActivity(in);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Review Not Updated", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
