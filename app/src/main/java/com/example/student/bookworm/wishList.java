@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
     WishAdapter adapter;
     WishList W;
   //  EditText txt_name;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,35 @@ public class wishList extends AppCompatActivity implements WishAdapter.OnWishing
 
         new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(rv);
 
+        editText = findViewById(R.id.search);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
     }
+    private void filter(String text){
+        ArrayList<WishList> filteredList = new ArrayList<>();
+
+        for(WishList item :  WarrayList){
+            if(item.getTitle().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        adapter.filteredList(filteredList);
+    }
+
 
 
 

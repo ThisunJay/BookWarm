@@ -70,13 +70,13 @@ public class ReadingActivity extends AppCompatActivity implements RAdapter.OnRea
 
     //search
     public void filter(String text) {
-        ArrayList<RBooks> filteredList = new ArrayList<>();
+            ArrayList<RBooks> filteredList = new ArrayList<>();
 
-        for(RBooks item : arrayList){
-            if(item.getName().toLowerCase().contains(text.toLowerCase())){
-                filteredList.add(item);
+            for(RBooks item : arrayList){
+                if(item.getName().toLowerCase().contains(text.toLowerCase())){
+                    filteredList.add(item);
+                }
             }
-        }
 
         adapter.filterList(filteredList);
     }

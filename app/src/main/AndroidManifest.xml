@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DashboardModify"></activity>
+        <activity android:name=".EditWish"></activity>
+        <activity android:name=".DashboardModify" />
         <activity android:name=".chechBook2" />
-        <activity android:name=".EditRead"></activity>
+        <activity android:name=".EditRead" />
         <activity android:name=".chechBook2" />
         <activity android:name=".OsaAddCategory" />
         <activity android:name=".DashboardModernCategory" />

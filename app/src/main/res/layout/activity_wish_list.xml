@@ -40,10 +40,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintVertical_bias="0.035" />
 
     <ImageButton
         android:id="@+id/imageButton15"
@@ -63,17 +63,33 @@
         app:layout_constraintVertical_bias="0.98"
         app:srcCompat="@drawable/abackicon" />
 
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="298dp"
+        android:layout_height="65dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycle1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ttv40"
+        app:layout_constraintVertical_bias="0.356" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle1"
-        android:layout_width="368dp"
-        android:layout_height="400dp"
+        android:layout_width="298dp"
+        android:layout_height="322dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.309"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58" />
 
 </android.support.constraint.ConstraintLayout>

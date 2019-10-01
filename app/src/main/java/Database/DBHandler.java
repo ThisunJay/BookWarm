@@ -248,7 +248,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
 //==================================Kavi Update=======================================
 
-    public boolean WishUpdate(String title,String author,double price){
+    public boolean WishUpdate(String id,String title,String author,double price){
         SQLiteDatabase db = getReadableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -256,9 +256,9 @@ public class DBHandler extends SQLiteOpenHelper {
         contentValues.put(BookWormMaster.AddWishList.COLUMN_Author , author);
         contentValues.put(BookWormMaster.AddWishList.COLUMN_Price , price);
 
-        String Selection = BookWormMaster.AddWishList.COLUMN_Title + "  ? ";
+        String Selection = BookWormMaster.AddWishList._ID + " = ? ";
         Log.i("DB" , Selection );
-        String SelectionArgs[] = { title };
+        String SelectionArgs[] = { id };
 
         int wish = db.update(BookWormMaster.AddWishList.TABLE_WLIST , contentValues ,Selection , SelectionArgs);
 

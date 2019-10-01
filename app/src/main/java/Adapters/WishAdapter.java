@@ -75,4 +75,9 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.WishAdapterVie
     public interface OnWishingListener{
             void OnWishingClick(int position);
     }
+
+    public void filteredList(ArrayList<WishList> filteredList){
+        WarrayList = filteredList;
+        notifyDataSetChanged();
+    }
 }
